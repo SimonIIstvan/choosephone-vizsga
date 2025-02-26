@@ -70,7 +70,7 @@
     margin-top: .8rem;
     border: 2px solid greenyellow;
     height: 30rem;
-    width: 20rem;
+    width: 18rem;
 }
 
 .telephone-list{
@@ -83,6 +83,27 @@
     margin-top: 1rem;
     padding-bottom: 5rem;
     padding-top: 1rem;
+}
+
+app-phonecard{
+    @media screen and (max-width: 1536px) {
+        width: calc(51% - 2rem);
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: calc(100% - 2rem);
+    }
+   
+}
+
+@media screen and (max-width: 1280px) {
+    .res-container {
+        max-width: none;
+    }
+    .telephone-list{
+        gap: .5rem;
+        width: 100%;
+    }
 }
 
 

@@ -1,25 +1,25 @@
+
 .phone-card {
     background-color: #fff;
     border: 1px solid #e7e8e7;
-    border-radius: .5rem;
+    border-radius: .6rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
     min-height: 14rem;
     max-height: 22rem;
-    min-width: 34rem;
     padding: .9rem;
 
     @media screen and (max-width: 1536px) {
-        min-width: 27rem;
+        width: 100%;
     }
 
     @media screen and (max-width: 1280px) {
-        min-width: 20.5rem;
-    }
+        padding: 0.4rem;
 
-    @media screen and (max-width: 1024px) {
-        min-width: 28.5rem;
+        
     }
 }
 
