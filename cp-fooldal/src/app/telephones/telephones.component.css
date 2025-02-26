@@ -1,0 +1,88 @@
+.background{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(300deg, blue, #000000);
+    background-size: 120% 120%;
+    animation: gradient-animation 10s ease infinite;
+    font-family: 'Fira Sans', serif;
+}
+
+.main-layout{
+    display: flex;
+    background-color: #f6f7fbee;
+    border: 2px solid;
+    justify-content: space-evenly;
+    
+}
+
+
+.tag-container{
+    background-color: rgba(26, 25, 25, 0.959);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 2rem;
+    overflow: hidden;
+}
+
+.tag-container h2{
+    color: #f3f3f3;
+    font-weight: 600;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.tags{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: .8rem;
+    max-width: 50rem;
+    border: 2px solid yellow;
+    margin-bottom: 1rem;
+    
+}
+
+.tags a{
+    text-decoration: none;
+    font-variant: small-caps;
+    font-weight: 500;
+    color: #9dcbff;
+    font-size: clamp(.85rem, 1.2vw, 1.3rem);
+    transition: all ease-in-out .15s;
+    border: 2px solid #9dcbff;
+    border-radius: 10px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-bottom: .25rem;
+    padding-top: .25rem;
+}
+
+.tags a:hover{
+    background-color: #9dcbff;
+    color: #0f1923;
+    transition: all ease-in-out .15s;
+}
+
+.filter-panel{
+    margin-top: .8rem;
+    border: 2px solid greenyellow;
+    height: 30rem;
+    width: 20rem;
+}
+
+.telephone-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid blueviolet;
+    width: 75%;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-bottom: 5rem;
+    padding-top: 1rem;
+}
+
+

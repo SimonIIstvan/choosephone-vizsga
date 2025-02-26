@@ -1,0 +1,20 @@
+footer{
+    text-align: center;
+    width: 100%;
+    background-color: rgb(17, 17, 17);
+    font-family: 'Fira Sans', serif;
+
+}
+
+footer h1{
+    color: #f3f3f323;
+    padding: .8rem;
+    font-size: 2.7rem;
+    font-variant: small-caps;
+}
+
+footer p{
+    color: #e2e2e2;
+    padding: .6rem;
+    font-size: 1rem;
+}

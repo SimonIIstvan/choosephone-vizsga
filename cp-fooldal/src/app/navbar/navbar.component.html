@@ -1,0 +1,30 @@
+<header class="nav-container">
+    <div class="nav-logo">
+        <span>ChoosePhone</span>
+    </div>
+    <div class="nav-link">
+        <li><a routerLink="" routerLinkActive="active">Főoldal</a></li>
+        <li><a routerLink="telefonok" routerLinkActive="active">Telefonok</a></li>
+        <li><a href="#">Csak neked<i class="fa-solid fa-fire"></i></a></li>
+        <li><a href="#">Kapcsolat</a></li>
+        <li><a href="#">Rólunk</a></li>
+    </div>
+    <div class="nav-user">
+        <li><a routerLink="bejelentkezes" routerLinkActive="active"><i
+                    class="fa-solid fa-user"></i></a></li>
+        <button (click)="toggleNavbar()" class="bars"><i
+                [ngClass]="isNavbarOpened ? 'fa-solid fa-x' : 'fa-solid fa-bars'" class=""></i></button>
+    </div>
+    <div [@openClose]="isNavbarOpened ? 'open' : 'closed'" class="navbar-expanded">
+        <li><a routerLink="" routerLinkActive="active">Főoldal</a></li>
+        <li><a routerLink="telefonok" routerLinkActive="active">Telefonok</a></li>
+        <li><a href="#">Csak neked<i class="fa-solid fa-fire"></i></a></li>
+        <li><a href="#">Kapcsolat</a></li>
+        <li><a href="#">Rólunk</a></li>
+        <li><a routerLink="bejelentkezes" routerLinkActive="active">Bejelentkezés<i
+                    class="fa-solid fa-user"></i></a>
+        </li>
+    </div>
+
+</header>
+

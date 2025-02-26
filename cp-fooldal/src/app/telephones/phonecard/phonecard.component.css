@@ -1,0 +1,107 @@
+.phone-card {
+    background-color: #fff;
+    border: 1px solid #e7e8e7;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 14rem;
+    max-height: 22rem;
+    min-width: 34rem;
+    padding: .9rem;
+
+    @media screen and (max-width: 1536px) {
+        min-width: 27rem;
+    }
+
+    @media screen and (max-width: 1280px) {
+        min-width: 20.5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        min-width: 28.5rem;
+    }
+}
+
+.image-container{
+    display: block;
+    border: 2px solid brown;
+    width: 9rem;
+    height: 12rem;
+}
+
+.phone-info{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid green;
+    height: 12rem;
+    width: 21rem;
+
+}
+
+.phone-row-top{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid pink;
+}
+
+.phone-title{
+    border: 2px solid red;
+    height: 3rem;
+    flex: 4;
+}
+
+.phone-add{
+    border: 2px solid blue;
+    height: 3rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-plus{
+    font-size: 1.2rem;
+    border-radius: 56%;
+    padding: .5rem .6rem .5rem .6rem;
+    color: rgba(255, 255, 255, 0.904);
+    background-color: #6c00fadc;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.21);
+    transition: all ease-in-out .15s;
+}
+
+.fa-plus:hover{
+    color: rgba(255, 255, 255, 1);
+    background-color: #6c00fa;
+    transform: scale(1.03);
+    transition: all ease-in-out .15s;
+}
+
+.phone-specs{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    border: 2px solid fuchsia;
+    width: calc(100% - .5rem);
+    height: 8rem;
+}
+
+.first-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid rgb(40, 17, 122);
+    width: 100%;
+    height: 100%;
+}
+
+.second-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    border: 2px solid rgb(88, 55, 204);
+    width: 100%;
+    height: 100%;
+}
+

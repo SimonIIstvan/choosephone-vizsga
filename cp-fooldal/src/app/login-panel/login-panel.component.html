@@ -1,0 +1,31 @@
+<main class="login-panel">
+    <app-navbar></app-navbar>
+    <div data-aos="zoom-in-up" class="res-container form-center">
+        <form class="" action="">
+            <h1 class="login-title">Bejelentkezés</h1>
+            <div class="container">
+                <div class="input-email">
+                    <label for="email" class="label">email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="input-password">
+                    <label for="password" class="label">jelszó</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="submit-button">
+                    <button type="submit">Bejelentkezés</button>
+                </div>
+                <div class="different-choice">
+                    <p>Bejelentkezés máshogy</p>
+                    <div class="social-media-icons">
+                        <i class="fa-brands fa-google"></i>
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <p>Nincs még fiókod?  <a routerLink="/regisztracio"><span>Regisztrálj most!</span></a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</main>
+<app-footer></app-footer>
