@@ -8,7 +8,7 @@
     justify-content: center;
     gap: 1rem;
     align-items: center;
-    min-height: 14rem;
+    min-height: 5rem;
     max-height: 22rem;
     padding: .9rem;
 
@@ -26,8 +26,15 @@
 .image-container{
     display: block;
     border: 2px solid brown;
-    width: 9rem;
-    height: 12rem;
+    max-width: 9.4rem;
+    min-height: 12rem;
+}
+
+.image-container img{
+    margin: auto;
+    display: block;
+    width: 9.25rem;
+    height: 11.5rem;
 }
 
 .phone-info{
@@ -103,5 +110,17 @@
     border: 2px solid rgb(88, 55, 204);
     width: 100%;
     height: 100%;
+}
+
+.telephone-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid blueviolet;
+    width: 75%;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-bottom: 5rem;
+    padding-top: 1rem;
 }
 

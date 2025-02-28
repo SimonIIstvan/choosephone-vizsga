@@ -28,16 +28,7 @@
         </p-scrollpanel>
 
         <div class="telephone-list">
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
-            <app-phonecard></app-phonecard>
+            <app-phonecard *ngFor="let phone of telephones" [phone]="phone"></app-phonecard>
         </div>
     </section>
 

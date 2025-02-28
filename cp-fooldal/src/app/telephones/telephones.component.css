@@ -127,10 +127,7 @@ app-phonecard{
     .res-container {
         max-width: none;
     }
-    .telephone-list{
-        gap: .5rem;
-        width: 100%;
-    }
+
 }
 
 

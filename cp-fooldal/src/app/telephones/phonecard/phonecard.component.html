@@ -1,11 +1,13 @@
 <div class="phone-card">
     <div class="image-container">
-
+        <img src="{{phone.kepUrl}}" alt="">
     </div>
     <div class="phone-info">
         <div class="phone-row-top">
             <div class="phone-title">
-                <p>{{penz | currency: 'Ft' : 'symbol-narrow' : '1.0-0'}}</p>
+                <p>{{phone.marka}} {{phone.modell}}</p>
+                <p></p>
+                <p>{{phone.ar| currency: 'Ft' : 'symbol-narrow' : '1.0-0'}}</p>
 
             </div>
             <div class="phone-add"> 
@@ -18,8 +20,8 @@
                 <p>293ppi</p>
             </div>
             <div class="second-column">
-                <p>4gb ram</p>
-                <p>128gb</p>
+                <p>{{phone.specs.memory}}GB memória</p>
+                <p>{{phone.specs.tarolo_kapacitas}}GB tárhely</p>
                 
             </div>
         </div>
