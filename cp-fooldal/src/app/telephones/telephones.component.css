@@ -66,12 +66,39 @@
     transition: all ease-in-out .15s;
 }
 
+
+/* Filter és a benne lévő tulajdonságok */
+
 .filter-panel{
-    margin-top: .8rem;
-    border: 2px solid greenyellow;
-    height: 30rem;
-    width: 18rem;
+    margin-top: 1rem;
 }
+
+.rendezes-select{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: .5rem;
+    width: 100%;
+}
+p-select{
+    width: 100%;
+}
+
+p-select .p-select-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ar-slider-container{
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border: 2px solid green;
+    height: 3rem;
+}
+
 
 .telephone-list{
     display: flex;

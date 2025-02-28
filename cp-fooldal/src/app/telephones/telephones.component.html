@@ -14,11 +14,24 @@
         </div>
     </div>
     <section class="main-layout res-container">
-        <div class="filter-panel">
-            <p>filterekk</p>
-        </div>
+        <p-scrollpanel class="filter-panel"
+            [style]="{width: '18rem', height: '70vh', border: '2px solid', position: 'sticky', overflow: 'auto',  top: '1rem'}">
+            <div class="rendezes-select">
+                <h3>Rendezés</h3>
+                <p-select styleClass="rendez" [options]="rendezesek" [(ngModel)]="kivalaszottRendezes" optionLabel="rendezes_tipus"
+                    placeholder="Rendezés..." class="" />
+            </div>
+            <div class="ar-slider-container">
+                <p-slider [(ngModel)]="arSkala" [range]="true" [animate]="true" [max]="591867" [min]="17877"/>
+                <p style="text-align: center;">{{arSkala[0]}} Ft - {{arSkala[1]}} Ft</p>
+            </div>
+        </p-scrollpanel>
 
         <div class="telephone-list">
+            <app-phonecard></app-phonecard>
+            <app-phonecard></app-phonecard>
+            <app-phonecard></app-phonecard>
+            <app-phonecard></app-phonecard>
             <app-phonecard></app-phonecard>
             <app-phonecard></app-phonecard>
             <app-phonecard></app-phonecard>
@@ -28,6 +41,6 @@
         </div>
     </section>
 
-    
+
 
 </main>
