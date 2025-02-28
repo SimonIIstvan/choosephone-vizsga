@@ -1,7 +1,7 @@
 .background{
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(300deg, blue, #000000);
+    background-color: #171e37;
     background-size: 120% 120%;
     animation: gradient-animation 10s ease infinite;
     font-family: 'Fira Sans', serif;
@@ -17,7 +17,7 @@
 
 
 .tag-container{
-    background-color: rgba(26, 25, 25, 0.959);
+    background-color: #171e37;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -49,10 +49,10 @@
     text-decoration: none;
     font-variant: small-caps;
     font-weight: 500;
-    color: #9dcbff;
+    color: white;
     font-size: clamp(.85rem, 1.2vw, 1.3rem);
     transition: all ease-in-out .15s;
-    border: 2px solid #9dcbff;
+    border: 2px solid rgba(153, 0, 255, 0.671);
     border-radius: 10px;
     padding-left: .5rem;
     padding-right: .5rem;
@@ -61,8 +61,8 @@
 }
 
 .tags a:hover{
-    background-color: #9dcbff;
-    color: #0f1923;
+    background-color: rgb(153, 0, 255);
+    color: #171e37;
     transition: all ease-in-out .15s;
 }
 
