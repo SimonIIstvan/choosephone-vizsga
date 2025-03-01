@@ -361,7 +361,11 @@
 
 
 .gradient-background {
+<<<<<<< Updated upstream
   background: linear-gradient(300deg, #171e37, #171e37);
+=======
+  background: linear-gradient(300deg, #171e37, #000000);
+>>>>>>> Stashed changes
   background-size: 120% 120%;
   animation: gradient-animation 10s ease infinite;
 }
