@@ -362,7 +362,11 @@
 
 .gradient-background {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   background: linear-gradient(300deg, #171e37, #171e37);
+=======
+  background: linear-gradient(300deg, #171e37, #000000);
+>>>>>>> Stashed changes
 =======
   background: linear-gradient(300deg, #171e37, #000000);
 >>>>>>> Stashed changes
