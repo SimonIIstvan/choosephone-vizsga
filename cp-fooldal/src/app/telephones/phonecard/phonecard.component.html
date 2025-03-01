@@ -5,9 +5,8 @@
     <div class="phone-info">
         <div class="phone-row-top">
             <div class="phone-title">
-                <p>{{phone.marka}} {{phone.modell}}</p>
-                <p></p>
-                <p>{{phone.ar| currency: 'Ft' : 'symbol-narrow' : '1.0-0'}}</p>
+                <h3>{{phone.marka}} {{phone.modell}}</h3>
+                <p>{{phone.ar| currency: ' ' : 'symbol' : '1.0-1'}} Ft</p>
 
             </div>
             <div class="phone-add"> 
@@ -16,13 +15,27 @@
         </div>
         <div class="phone-specs">
             <div class="first-column">
-                <p>6.67 col</p>
-                <p>293ppi</p>
+                <div class="screen-size">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                    <p>{{phone.display.kijelzo_meret}}"</p>
+                    
+                </div>
+                
+                
+                <div class="screen-hz">
+                    <p><span>HZ</span> {{phone.display.kepfrissites}}</p>
+                </div>
             </div>
             <div class="second-column">
-                <p>{{phone.specs.memory}}GB memória</p>
-                <p>{{phone.specs.tarolo_kapacitas}}GB tárhely</p>
-                
+                <div class="memory">
+                    <i class="fa-solid fa-memory"></i>
+                    <p>{{phone.specs.memory}}GB</p>
+                </div>
+
+                <div class="tarhely">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <p>{{phone.specs.tarolo_kapacitas}}GB</p>
+                </div>
             </div>
         </div>
     </div>

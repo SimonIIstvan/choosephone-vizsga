@@ -12,19 +12,20 @@ export class TelephonesService {
 
   constructor(private http: HttpClient) { }
 
-  getPhones(filters?: Partial<TermekSzuro>): Observable<Telephone[]> {
+  getAllTelephones(): Observable<Telephone[]> {
+    return this.http.get<Telephone[]>(`${this.apiUrl}/telephones`);
+  }
+
+  getTelephones(filter: TermekSzuro): Observable<Telephone[]> {
     let params = new HttpParams();
 
-    if (filters) {
-      if (filters.minAr) params = params.set('minAr', filters.minAr.toString());
-      if (filters.maxAr) params = params.set('maxAr', filters.maxAr.toString());
-      if (filters.ram && filters.ram.length > 0){
-        filters.ram.forEach(ram => {
-          params = params.append('ram', ram);
-        })
-      }
+    if (filter.minAr) {
+      params = params.set('minAr', filter.minAr.toString());
     }
-
+    if (filter.maxAr) {
+      params = params.set('maxAr', filter.maxAr.toString());
+    }
+    
     return this.http.get<Telephone[]>(`${this.apiUrl}/telephones`, { params });
   }
   

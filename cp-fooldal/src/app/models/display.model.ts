@@ -7,4 +7,5 @@ export interface Display {
     panel_tipus: string;
     vedouveg: string;
     telephoneId: number;
+    
 }

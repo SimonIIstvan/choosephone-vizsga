@@ -22,9 +22,12 @@
                     placeholder="Rendezés..." class="" />
             </div>
             <div class="ar-slider-container">
-                <p-slider [(ngModel)]="arSkala" [range]="true" [animate]="true" [max]="591867" [min]="17877"/>
+                <p-slider [(ngModel)]="arSkala" [range]="true" [max]="510000" [min]="40000"/>
                 <p style="text-align: center;">{{arSkala[0]}} Ft - {{arSkala[1]}} Ft</p>
+
             </div>
+
+            <p-button [style]="{width: '100%', 'margin-top': '4rem'}">Tesztgomb</p-button>
         </p-scrollpanel>
 
         <div class="telephone-list">

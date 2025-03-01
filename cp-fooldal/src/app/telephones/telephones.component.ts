@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -12,6 +12,8 @@ import { SliderModule } from 'primeng/slider';
 import { Telephone } from '../models/telephone.model';
 import { TermekSzuro } from '../models/termek-szuro.model';
 import { TelephonesService } from './telephones.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 interface rendezesTipus {
   rendezes_tipus: string;
@@ -26,14 +28,17 @@ interface rendezesTipus {
 })
 export class TelephonesComponent implements OnInit {
   telephones: Telephone[] = [];
-  filters: TermekSzuro[] = [];
+  filter: TermekSzuro = {};
   rendezesek: rendezesTipus[] | undefined;
-  arSkala: number[] = [30000, 500000];
+  arSkala: number[] = [40000, 510000];
+  minPrice: number = 0;
+  maxPrice: number = 0;
   error = '';
+
 
   kivalaszottRendezes: rendezesTipus | undefined;
 
-  constructor(private telephonesService: TelephonesService) {}
+  constructor(private telephonesService: TelephonesService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.rendezesek = [
@@ -43,24 +48,47 @@ export class TelephonesComponent implements OnInit {
       { rendezes_tipus: 'Megjelenési év szerint növekvő' }
     ]
 
-    this.loadPhones();
-    
+    this.loadTelephones();
   }
 
-  loadPhones(): void {
-    this.telephonesService.getPhones().subscribe({
-      next: (phones) => {
-        this.telephones = phones;
-        console.log(phones)
-      },
-      error: (error) => {
-        this.error = 'Hiba történt a telefonok betöltésekor';
-        console.error(error);
+
+  loadTelephones(): void {
+    this.telephonesService.getTelephones(this.filter).subscribe((data: Telephone[]) => {
+      this.telephones = data;
+      this.calculateMinMaxPrice();
+
+    },
+      (error) => {
+        this.error = "Hiba történt!:", error;
       }
-    });
+    );
+
   }
 
   
+
+
+  calculateMinMaxPrice(): void {
+    if (this.telephones.length === 0) {
+      this.minPrice = 0;
+      this.maxPrice = 0;
+      return;
+    }
+
+    // Inicializáljuk a változókat az első telefon árával
+    this.minPrice = this.telephones[0].ar;
+    this.maxPrice = this.telephones[0].ar;
+
+    // Végigmegyünk a többi telefonon és frissítjük a min/max értékeket
+    for (const phone of this.telephones) {
+      if (phone.ar < this.minPrice) {
+        this.minPrice = phone.ar;
+      }
+      if (phone.ar > this.maxPrice) {
+        this.maxPrice = phone.ar;
+      }
+    }
+  }
 
 
 }
