@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+
+<div class="telephone-details">
+
+
+  <div *ngIf="loading" class="loading">
+    <p>Betöltés...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>Hiba történt a telefon adatainak betöltése közben. Kérjük, próbáld újra később.</p>
+  </div>
+
+  <div class="container">
+    <div class="details-container">
+      <div class="phone-name">
+        <h1>{{phone?.marka}} {{phone?.modell}}</h1>
+        <div class="phone-row">
+          <div data-aos="fade-right" class="phone-card">
+            <h3><i class="fa-solid fa-gear"></i>Teljesítmény</h3>
+            <div class="details">
+              <p><span>CPU: </span>{{phone?.specs?.cpu}}</p>
+              <p><span>GPU: </span>{{phone?.specs?.gpu}}</p>
+              <p><span>Mag: </span>{{phone?.specs?.magok_szama}} magos</p>
+              <p><span>RAM: </span>{{phone?.specs?.memory}} GB</p>
+              <p><span>Tárhely: </span>{{phone?.specs?.tarolo_kapacitas}} GB</p>
+              <p><span>Benchmark pontszám: </span>{{phone?.specs?.antutuscore | number}}pt</p>
+            </div>
+          </div>
+          <div data-aos="fade-left" class="phone-card">
+            <h3><i class="fa-solid fa-camera"></i>Kamera</h3>
+            <div class="details">
+              <p><span>Hátlapi kamera: </span>{{phone?.camera?.fo_kamera}}px</p>
+              <p><span>Előlapi kamera: </span>{{phone?.camera?.szelfi_kamera}}px</p>
+              <p><span>Videó felvétel: </span>{{phone?.camera?.video_felvetel}}K</p>
+              <p><span>Videó képkockasebesség: </span>{{phone?.camera?.video_fps}}fps</p>
+              <p><span>AI támogatás: </span>{{phone?.camera?.ai_tamogatas ? 'Igen' : 'Nem'}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="phone-row">
+          <div data-aos="fade-right" class="phone-card">
+            <h3><i class="fa-solid fa-mobile-screen"></i>Kijelző</h3>
+            <div class="details">
+              <p><span>Felbontás: </span>{{phone?.display?.felbontas_szelesseg}} x
+                {{phone?.display?.felbontas_magassag}}</p>
+              <p><span>Kijelzőméret: </span>{{phone?.display?.kijelzo_meret}}"</p>
+              <p><span>Képfrissítés: </span>{{phone?.display?.kepfrissites}}hz</p>
+              <p><span>Panel típusa: </span>{{phone?.display?.panel_tipus}}</p>
+              <p><span>Védőüveg: </span>{{phone?.display?.vedouveg}}</p>
+
+            </div>
+
+          </div>
+          <div data-aos="fade-left" class="phone-card">
+            <h3><i class="fa-solid fa-battery-three-quarters"></i>Akkumulátor</h3>
+            <div class="details">
+              <p><span>Akkumulátor: </span>{{phone?.battery?.akkumulator_kapacitas}}mAh</p>
+              <p><span>Töltés (vezetéken): </span>{{phone?.battery?.toltes}}W</p>
+              <p><span>Vezeték nélküli töltés: </span>{{phone?.battery?.vezetek_nelkuli_toltes ? 'Igen' : 'Nem'}}</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div data-aos="fade-left" class="image-container">
+      <img [src]="phone?.kepUrl" alt="telefonkep">
+      <div class="brand-name">
+        <h2>{{phone?.marka | lowercase}}</h2>
+      </div>
+    </div>
+  </div>
+</div>

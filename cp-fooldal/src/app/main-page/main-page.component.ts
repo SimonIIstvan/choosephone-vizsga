@@ -17,6 +17,7 @@ export class MainPageComponent implements OnInit {
     AOS.init({
       duration: 850,
       delay: 200,
+      once: true
     });
   }
 

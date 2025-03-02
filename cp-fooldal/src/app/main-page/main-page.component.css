@@ -34,7 +34,7 @@
 .kawaiiphone img {
   width: 250px;
   position: absolute;
-  top: 16rem;
+  top: 17rem;
   animation: kacsintas 8s ease-in-out;
   animation-delay: 5s;
   animation-iteration-count: 1;
@@ -42,7 +42,7 @@
 
 @keyframes kacsintas {
   0% {
-    top: 16rem;
+    top: 17rem;
   }
 
   40% {
@@ -55,7 +55,7 @@
   }
 
   100% {
-    top: 16rem;
+    top: 17rem;
   }
 }
 
@@ -73,7 +73,7 @@
 }
 
 .opening-title h1 {
-  font-size: 6rem;
+  font-size: clamp(2.2rem, 5.75vw, 5rem);
   color: #f3f1f1;
   font-weight: 500;
   padding-bottom: 0.7rem;
@@ -120,6 +120,8 @@
   color: #ecebeb;
   font-weight: 300;
   padding-bottom: 3.5rem;
+  font-size: clamp(1.02rem, 1.5vw, 3rem);
+  
 
 
 
@@ -264,7 +266,7 @@
   overflow: hidden;
   width: 100%;
   padding: 3rem 1rem;
-  background-color: #171e37;
+  background-color: #131829;
 }
 
 .phone-splash {
@@ -361,32 +363,15 @@
 
 
 .gradient-background {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  background: linear-gradient(300deg, #171e37, #171e37);
-=======
-  background: linear-gradient(300deg, #171e37, #000000);
->>>>>>> Stashed changes
-=======
-  background: linear-gradient(300deg, #171e37, #000000);
->>>>>>> Stashed changes
-  background-size: 120% 120%;
-  animation: gradient-animation 10s ease infinite;
+  background: url('/images/blob-haikei.svg');
+  background-color: #171e37;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+  
 }
 
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 
 /* media queryk */
@@ -464,13 +449,7 @@
 
   }
 
-  .opening-title h1 {
-    font-size: 4.9rem;
-  }
-
-  .opening-title h2 {
-    font-size: 1.4rem;
-  }
+  
 }
 
 @media screen and (max-width: 640px) {
@@ -478,13 +457,6 @@
     max-width: 100%;
   }
 
-  .opening-title h1 {
-    font-size: 4.7rem;
-  }
-
-  .opening-title h2 {
-    font-size: 1.05rem;
-  }
 }
 
 @media screen and (max-width: 475px) {
@@ -500,16 +472,6 @@
     font-size: 1.2rem;
 
   }
-
-  .opening-title h1 {
-    font-size: 4.5rem;
-  }
-
-  .opening-title h2 {
-    white-space: normal;
-  }
-
-
 
 }
 
@@ -527,8 +489,5 @@
 
   }
 
-  .opening-title h1 {
-    font-size: 4.4rem;
-  }
 
 }

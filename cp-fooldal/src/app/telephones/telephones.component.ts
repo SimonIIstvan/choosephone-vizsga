@@ -14,6 +14,12 @@ import { TermekSzuro } from '../models/termek-szuro.model';
 import { TelephonesService } from './telephones.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { AccordionModule } from 'primeng/accordion';
+import { PanelModule } from 'primeng/panel';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 interface rendezesTipus {
   rendezes_tipus: string;
@@ -21,7 +27,9 @@ interface rendezesTipus {
 
 @Component({
   selector: 'app-telephones',
-  imports: [ButtonModule, NavbarComponent, FooterComponent, PhonecardComponent, ScrollPanelModule, SelectModule, Select, FormsModule, SliderModule, CommonModule],
+  imports: [ButtonModule, NavbarComponent, PhonecardComponent,
+    ScrollPanelModule, SelectModule, Select, FormsModule, SliderModule, CommonModule, MultiSelectModule, InputNumberModule, AccordionModule, PanelModule,
+    CheckboxModule, RadioButtonModule],
   templateUrl: './telephones.component.html',
   styleUrl: './telephones.component.css',
   encapsulation: ViewEncapsulation.None
@@ -30,10 +38,26 @@ export class TelephonesComponent implements OnInit {
   telephones: Telephone[] = [];
   filter: TermekSzuro = {};
   rendezesek: rendezesTipus[] | undefined;
-  arSkala: number[] = [40000, 510000];
+  arSkala: number[] = [0, 1000000];
   minPrice: number = 0;
   maxPrice: number = 0;
   error = '';
+
+  /* Szűrőkhöz szükséges tárolók */
+
+  markak: string[] = [];
+  kivalasztottMarkak: string[] = [];
+
+  megjelenesEvMin: number = 2008;
+  megjelenesEvMax: number = 2025;
+
+  tarhely: number[] = [];
+
+  ram: number[] = [];
+
+  magok: number[] = [];
+
+  os: string = '';
 
 
   kivalaszottRendezes: rendezesTipus | undefined;
@@ -47,6 +71,20 @@ export class TelephonesComponent implements OnInit {
       { rendezes_tipus: 'Megjelenési év szerint csökkkenő' },
       { rendezes_tipus: 'Megjelenési év szerint növekvő' }
     ]
+
+
+
+    /* Filter inicializálás */
+
+    this.telephonesService.getAllTelephones().subscribe((data: Telephone[]) => {
+      data.forEach(phone => {
+        if (!this.markak.includes(phone.marka)) {
+          this.markak.push(phone.marka);
+        }
+      })
+    })
+
+
 
     this.loadTelephones();
   }
@@ -65,7 +103,7 @@ export class TelephonesComponent implements OnInit {
 
   }
 
-  
+
 
 
   calculateMinMaxPrice(): void {
@@ -88,6 +126,95 @@ export class TelephonesComponent implements OnInit {
         this.maxPrice = phone.ar;
       }
     }
+  }
+
+  gombKattintas() {
+    /* Márka alapján szűrés */
+    this.filter.markak = this.kivalasztottMarkak;
+
+    /* Ár alapján szűrés */
+    if (this.arSkala[0] !== this.minPrice || this.arSkala[1] !== this.maxPrice) {
+      this.filter.minAr = this.arSkala[0];
+      this.filter.maxAr = this.arSkala[1];
+    }
+
+    /* Megjelenési év alapján szűrés */
+    if (this.megjelenesEvMin !== 2008 || this.megjelenesEvMax !== 2025) {
+      this.filter.minMegjelenesEv = this.megjelenesEvMin;
+      this.filter.maxMegjelenesEv = this.megjelenesEvMax;
+    }
+
+
+    /* Tárhely alapján szűrés */
+    if (this.tarhely.length !== 0) {
+      this.filter.tarhely = this.tarhely;
+      this.tarhely = [];
+    }
+
+    /* Memória alapján szűrés */
+    if (this.ram.length !== 0) {
+      if (this.ram.find((ram) => ram <= 4)) {
+        this.ram.push(1, 2, 3);
+      }
+
+      if (this.ram.find((ram) => ram >= 12)) {
+        this.ram.push(14, 16, 24, 32);
+      }
+
+      this.filter.ram = this.ram;
+      this.ram = [];
+      console.log(this.filter.ram);
+    }
+
+    /* Magok alapján szűrés */
+    if (this.magok.length !== 0) {
+      if (this.magok.find((mag) => mag == 2)) {
+        this.magok.push(1)
+      }
+
+      if (this.magok.find((mag) => mag == 4)) {
+        this.magok.push(2, 3)
+      }
+
+      if (this.magok.find((mag) => mag == 8)) {
+        this.magok.push(5, 6, 7)
+      }
+
+      if (this.magok.find((mag) => mag == 16)) {
+        this.magok.push(9, 10, 11, 12, 13, 14, 15)
+      }
+    }
+
+    
+    this.filter.magok = [...new Set(this.magok)];
+    this.magok = [];
+    
+
+    if (this.os.length !== 0) {
+      this.filter.operaciosRendszer = this.os;
+      this.os = '';
+    }
+
+
+    this.loadTelephones();
+  }
+
+
+
+  /* --- PrimeNG komponens dizánjnok --- */
+
+  elrendezes = {
+    overlay: {
+      background: "#9200FF",
+    }
+
+  }
+
+  arCsuszka = {
+    rangeBackground: "#9200FF",
+    trackSize: "5px",
+    trackBackground: "#9000ff60",
+
   }
 
 

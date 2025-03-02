@@ -15,19 +15,156 @@
     </div>
     <section class="main-layout res-container">
         <p-scrollpanel class="filter-panel"
-            [style]="{width: '18rem', height: '70vh', border: '2px solid', position: 'sticky', overflow: 'auto',  top: '1rem'}">
+            [style]="{width: '20rem', height: '70vh', border: '1px solid', position: 'sticky', overflow: 'auto',  top: '1rem', backgroundColor: '#f6f7fbee', borderRadius: '5px'}">
             <div class="rendezes-select">
-                <h3>Rendezés</h3>
-                <p-select styleClass="rendez" [options]="rendezesek" [(ngModel)]="kivalaszottRendezes" optionLabel="rendezes_tipus"
-                    placeholder="Rendezés..." class="" />
+                <p-select [options]="rendezesek" [(ngModel)]="kivalaszottRendezes" optionLabel="rendezes_tipus"
+                    placeholder="Rendezés..." [dt]="elrendezes" />
             </div>
             <div class="ar-slider-container">
-                <p-slider [(ngModel)]="arSkala" [range]="true" [max]="510000" [min]="40000"/>
+                <p-slider [(ngModel)]="arSkala" [range]="true" [max]="1000000" [min]="0" [step]="100"
+                    [dt]="arCsuszka" />
                 <p style="text-align: center;">{{arSkala[0]}} Ft - {{arSkala[1]}} Ft</p>
-
             </div>
 
-            <p-button [style]="{width: '100%', 'margin-top': '4rem'}">Tesztgomb</p-button>
+            <div class="markak-container">
+                <p-multiselect [options]="markak" [selectedItemsLabel]="'{0} márka kiválasztva'"
+                    [(ngModel)]="kivalasztottMarkak" placeholder="Márkák" />
+            </div>
+
+            <div class="megjelenes-ev-container">
+                <h4>Megjelenési év</h4>
+                <div class="megjelenes-ev-input">
+                    <p-inputnumber [(ngModel)]="megjelenesEvMin" mode="decimal" inputId="withoutgrouping"
+                        [useGrouping]="false" placeholder="-tól" />
+                    <p>-</p>
+                    <p-inputnumber [(ngModel)]="megjelenesEvMax" mode="decimal" inputId="withoutgrouping"
+                        [useGrouping]="false" placeholder="-ig" />
+
+                </div>
+            </div>
+
+            <div class="tulajdonsagok">
+                <p-accordion value="0" multiple="true">
+                    <p-accordion-panel value="1">
+                        <p-accordion-header>Belső specifikációk</p-accordion-header>
+                        <p-accordion-content>
+                            <p-panel header="Tárhely" [toggleable]="true">
+                                <div class="checkbox-column">
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="tarhely1" name="tarhely" value="128"
+                                            [(ngModel)]="tarhely" />
+                                        <label for="tarhely1" class="ml-2"> 128GB </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="tarhely2" name="tarhely" value="256"
+                                            [(ngModel)]="tarhely" />
+                                        <label for="tarhely2" class="ml-2"> 256GB </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="tarhely3" name="tarhely" value="512"
+                                            [(ngModel)]="tarhely" />
+                                        <label for="tarhely3" class="ml-2"> 512GB </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="tarhely4" name="tarhely" value="1024"
+                                            [(ngModel)]="tarhely" />
+                                        <label for="tarhely4" class="ml-2"> 1TB </label>
+                                    </div>
+                                </div>
+                            </p-panel>
+                            <p-panel header="Memória" [toggleable]="true">
+                                <div class="checkbox-column">
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="ram1" name="ram" value="4" [(ngModel)]="ram" />
+                                        <label for="tarhely1" class="ml-2"> &lt;4GB </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="ram2" name="tarhely" value="6" [(ngModel)]="ram" />
+                                        <label for="tarhely2" class="ml-2"> 6GB </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="ram3" name="tarhely" value="8" [(ngModel)]="ram" />
+                                        <label for="tarhely3" class="ml-2"> 8GB </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="ram4" name="tarhely" value="12" [(ngModel)]="ram" />
+                                        <label for="tarhely4" class="ml-2"> 12GB&lt; </label>
+                                    </div>
+                                </div>
+                            </p-panel>
+                            <p-panel header="Magok száma" [toggleable]="true">
+                                <div class="checkbox-column">
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="mag1" name="mag" value="2" [(ngModel)]="magok" />
+                                        <label for="mag1" class="ml-2"> &lt;2 </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="mag2" name="mag" value="4" [(ngModel)]="magok" />
+                                        <label for="mag2" class="ml-2"> 2-4 </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="mag3" name="mag" value="8" [(ngModel)]="magok" />
+                                        <label for="mag3" class="ml-2"> 4-8 </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-checkbox inputId="mag4" name="mag" value="16" [(ngModel)]="magok" />
+                                        <label for="mag4" class="ml-2"> 8-16 </label>
+                                    </div>
+                                </div>
+                            </p-panel>
+                            <p-panel header="Operációs rendszer" [toggleable]="true">
+                                <div class="checkbox-column">
+                                    <div class="checkbox-item">
+                                        <p-radiobutton inputId="os1" name="os" value="Android" [(ngModel)]="os" />
+                                        <label for="mag1" class="ml-2"> Android </label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <p-radiobutton inputId="os2" name="os" value="iOS" [(ngModel)]="os" />
+                                        <label for="mag2" class="ml-2"> iOS </label>
+                                    </div>
+                                </div>
+                            </p-panel>
+                        </p-accordion-content>
+                    </p-accordion-panel>
+
+                    <p-accordion-panel value="2">
+                        <p-accordion-header>Kijelző</p-accordion-header>
+                        <p-accordion-content>
+                            <p class="m-0">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                laudantium, totam rem
+                                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                dicta sunt explicabo. Nemo
+                                enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                                consequuntur magni dolores eos
+                                qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam
+                                eius modi.
+                            </p>
+                        </p-accordion-content>
+                    </p-accordion-panel>
+
+                    <p-accordion-panel value="3">
+                        <p-accordion-header>Kamera</p-accordion-header>
+                        <p-accordion-content>
+                            <p class="m-0">
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
+                                occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+                                mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
+                                expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque
+                                nihil impedit quo minus.
+                            </p>
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                </p-accordion>
+            </div>
+
+            <div class="filter-gomb">
+                <p-button (click)="gombKattintas()"
+                    [style]="{width: '100%', 'margin-top': '2rem' }">Tesztgomb</p-button>
+            </div>
+
+
         </p-scrollpanel>
 
         <div class="telephone-list">

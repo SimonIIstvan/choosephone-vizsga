@@ -1,4 +1,4 @@
-.background{
+.background {
     width: 100%;
     min-height: 100vh;
     background-color: #171e37;
@@ -7,16 +7,16 @@
     font-family: 'Fira Sans', serif;
 }
 
-.main-layout{
+.main-layout {
     display: flex;
     background-color: #f6f7fbee;
-    border: 2px solid;
     justify-content: space-evenly;
-    
+    height: 100%;
+
 }
 
 
-.tag-container{
+.tag-container {
     background-color: #171e37;
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
     overflow: hidden;
 }
 
-.tag-container h2{
+.tag-container h2 {
     color: #f3f3f3;
     font-weight: 600;
     padding-bottom: 1rem;
@@ -33,26 +33,24 @@
     margin-top: 1rem;
 }
 
-.tags{
+.tags {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: .8rem;
     max-width: 50rem;
-    border: 2px solid yellow;
     margin-bottom: 1rem;
-    
+
 }
 
-.tags a{
+.tags a {
     text-decoration: none;
     font-variant: small-caps;
     font-weight: 500;
     color: white;
     font-size: clamp(.85rem, 1.2vw, 1.3rem);
     transition: all ease-in-out .15s;
-    border: 2px solid rgba(153, 0, 255, 0.671);
     border-radius: 10px;
     padding-left: .5rem;
     padding-right: .5rem;
@@ -60,7 +58,7 @@
     padding-top: .25rem;
 }
 
-.tags a:hover{
+.tags a:hover {
     background-color: rgb(153, 0, 255);
     color: #171e37;
     transition: all ease-in-out .15s;
@@ -69,43 +67,126 @@
 
 /* Filter és a benne lévő tulajdonságok */
 
-.filter-panel{
+.filter-panel {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 1rem;
+    gap: 1.5rem;
 }
 
-.rendezes-select{
+.rendezes-select {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: .5rem;
-    width: 100%;
+    width: 90%;
     padding-bottom: 2rem;
 }
-p-select{
+
+p-select {
     width: 100%;
+    color: #6f00c4;
 }
 
-p-select .p-select-list-container{
+p-select .p-select-list-container {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.ar-slider-container{
-    
+.ar-slider-container {
+    padding-top: 1.5rem;
+    margin: 0 auto;
+    width: 90%;
+
 }
 
-p-slider{
+.markak-container {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.markak-container p-multiselect {
     width: 100%;
 }
 
-.telephone-list{
+.megjelenes-ev-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.5rem;
+    width: 90%;
+    gap: 1rem;
+
+}
+
+.megjelenes-ev-input {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 90%;
+}
+
+.megjelenes-ev-input p-inputnumber .p-inputnumber-input {
+    text-align: center;
+    width: 5rem;
+
+
+}
+
+.tulajdonsagok {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.5rem;
+    width: 90%;
+}
+
+/* Tárhely checkbox */
+.checkbox-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: .5rem;
+    width: 100%;
+    gap: 1rem;
+}
+
+.checkbox-item {
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-gomb{
+    margin: 0 auto;
+    width: 85%;
+}
+
+
+
+
+
+
+
+
+.telephone-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: 2px solid blueviolet;
     width: 75%;
     gap: 2rem;
     margin-top: 1rem;
@@ -113,7 +194,7 @@ p-slider{
     padding-top: 1rem;
 }
 
-app-phonecard{
+app-phonecard {
     @media screen and (max-width: 1536px) {
         width: calc(51% - 2rem);
     }
@@ -121,7 +202,7 @@ app-phonecard{
     @media screen and (max-width: 1024px) {
         width: calc(100% - 2rem);
     }
-   
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -130,5 +211,3 @@ app-phonecard{
     }
 
 }
-
-
