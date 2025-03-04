@@ -7,21 +7,21 @@ import { TelephoneDetailComponent } from './telephones/telephone-detail/telephon
 
 export const routes: Routes = [
     {
-        path: '', component: MainPageComponent
+        path: '',
+        loadComponent: () => import('./main-page/main-page.component').then(m => m.MainPageComponent)
+    },
+
+    {
+        path: 'telefonok', component: TelephonesComponent
     },
     
     {
         path: 'bejelentkezes', component: LoginPanelComponent
     },
 
-   
 
     {
         path: 'regisztracio', component: RegisterPanelComponent
-    },
-
-    {
-        path: 'telefonok', component: TelephonesComponent
     },
 
     {

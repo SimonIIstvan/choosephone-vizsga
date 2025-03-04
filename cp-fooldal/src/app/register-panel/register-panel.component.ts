@@ -11,19 +11,6 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './register-panel.component.css'
 })
 export class RegisterPanelComponent {
-  ngOnInit(): void {
-      AOS.init({
-        duration: 850,
-        delay: 200,
-      });
-    }
   
-    ngAfterViewInit(): void {
-      this.refreshAOS();
-    }
-  
-    private refreshAOS(): void {
-      AOS.refresh();
-    }
 
 }

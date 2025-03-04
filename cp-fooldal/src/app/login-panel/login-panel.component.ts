@@ -10,21 +10,8 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './login-panel.component.html',
   styleUrl: './login-panel.component.css'
 })
-export class LoginPanelComponent implements OnInit {
-  ngOnInit(): void {
-    AOS.init({
-      duration: 850,
-      delay: 200,
-    });
-  }
-
-  ngAfterViewInit(): void {
-    this.refreshAOS();
-  }
-
-  private refreshAOS(): void {
-    AOS.refresh();
-  }
+export class LoginPanelComponent {
+  
 
 
 }

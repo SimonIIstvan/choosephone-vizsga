@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -20,6 +20,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { PanelModule } from 'primeng/panel';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import * as AOS from 'aos';
 
 interface rendezesTipus {
   rendezes_tipus: string;
@@ -34,7 +35,7 @@ interface rendezesTipus {
   styleUrl: './telephones.component.css',
   encapsulation: ViewEncapsulation.None
 })
-export class TelephonesComponent implements OnInit {
+export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
   telephones: Telephone[] = [];
   filter: TermekSzuro = {};
   rendezesek: rendezesTipus[] | undefined;
@@ -64,6 +65,10 @@ export class TelephonesComponent implements OnInit {
 
   constructor(private telephonesService: TelephonesService, private http: HttpClient) { }
 
+  ngAfterViewInit() {
+    AOS.refreshHard();
+  }
+
   ngOnInit(): void {
     this.rendezesek = [
       { rendezes_tipus: 'Ár szerint növekvő' },
@@ -71,6 +76,8 @@ export class TelephonesComponent implements OnInit {
       { rendezes_tipus: 'Megjelenési év szerint csökkkenő' },
       { rendezes_tipus: 'Megjelenési év szerint növekvő' }
     ]
+
+  
 
 
 
@@ -87,6 +94,7 @@ export class TelephonesComponent implements OnInit {
 
 
     this.loadTelephones();
+    AOS.refreshHard();
   }
 
 
@@ -215,6 +223,11 @@ export class TelephonesComponent implements OnInit {
     trackSize: "5px",
     trackBackground: "#9000ff60",
 
+  }
+
+
+  ngOnDestroy(): void {
+    AOS.refreshHard();
   }
 
 

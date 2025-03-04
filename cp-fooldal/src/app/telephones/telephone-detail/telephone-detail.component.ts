@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Telephone } from '../../models/telephone.model';
 import { TelephonesService } from '../telephones.service';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { AnimateOnScrollModule } from 'primeng/animateonscroll';
   templateUrl: './telephone-detail.component.html',
   styleUrl: './telephone-detail.component.css'
 })
-export class TelephoneDetailComponent implements OnInit {
+export class TelephoneDetailComponent implements OnInit, AfterViewInit {
   phone: Telephone | null = null;
   loading = true;
   error = false;
@@ -23,6 +23,10 @@ export class TelephoneDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private phoneService: TelephonesService
   ) { }
+
+  ngAfterViewInit() {
+    AOS.init();
+  }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
