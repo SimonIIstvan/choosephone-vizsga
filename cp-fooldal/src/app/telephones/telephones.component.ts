@@ -63,7 +63,7 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   kivalaszottRendezes: rendezesTipus | undefined;
 
-  constructor(private telephonesService: TelephonesService, private http: HttpClient) { }
+  constructor(private telephonesService: TelephonesService) { }
 
   ngAfterViewInit() {
     AOS.refreshHard();
@@ -81,7 +81,7 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
 
-    /* Filter inicializálás */
+    
 
     this.telephonesService.getAllTelephones().subscribe((data: Telephone[]) => {
       data.forEach(phone => {
@@ -136,6 +136,7 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  /* Jobbról balra átadás a szűrőnek */
   gombKattintas() {
     /* Márka alapján szűrés */
     this.filter.markak = this.kivalasztottMarkak;
