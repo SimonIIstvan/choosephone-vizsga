@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/
 import { TelephoneService } from './telephone.service';
 import { Telephone } from './entities/telephone.entity';
 import { TermekSzuroDto } from './dto/termek-szuro.dto';
+import { KeresesDto } from './dto/kereses.dto';
 
 @Controller('telephones')
 export class TelephoneController {
@@ -20,6 +21,11 @@ export class TelephoneController {
 
 
     return this.telephoneService.findByFilter(termekSzuroDto);
+  }
+
+  @Get('kereses')
+  search(@Query('search') searchTerm: string): Promise<Telephone[]> {
+    return this.telephoneService.search(searchTerm);
   }
 
   @Get(':id')
@@ -44,13 +50,7 @@ export class TelephoneController {
 
   //komolyabb
 
-  @Get('fasz/:minPrice/:maxPrice')
-  findByPriceRange(
-    @Param('minPrice') minPrice: string,
-    @Param('maxPrice') maxPrice: string,
-  ) {
-    return this.telephoneService.findByPriceRange(+minPrice, +maxPrice);
-  }
+
 
   @Get('marka/:brand')
   findByBrand(@Param('brand') brand: string) {

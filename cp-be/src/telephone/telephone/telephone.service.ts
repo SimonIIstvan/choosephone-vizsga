@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Telephone } from './entities/telephone.entity';
 import { Between, ILike, Repository } from 'typeorm';
 import { TermekSzuroDto } from './dto/termek-szuro.dto';
+import { KeresesDto } from './dto/kereses.dto';
 
 @Injectable()
 export class TelephoneService {
@@ -11,7 +12,7 @@ export class TelephoneService {
     private telephoneRepository: Repository<Telephone>,
   ) { }
 
-  
+
 
   findOne(id: number) {
     return this.telephoneRepository.findOne({ where: { id }, relations: ['specs', 'os', 'display', 'camera', 'battery'] });
@@ -55,6 +56,29 @@ export class TelephoneService {
     });
   }
 
+  /* Keresés */
+
+  async search(searchTerm: string): Promise<Telephone[]> {
+    if (!searchTerm || searchTerm.trim() === '') {
+      return [];
+    }
+
+    const queryBuilder = this.telephoneRepository.createQueryBuilder('telephone');
+
+    queryBuilder.leftJoinAndSelect('telephone.specs', 'specs');
+    queryBuilder.leftJoinAndSelect('telephone.os', 'os');
+    queryBuilder.leftJoinAndSelect('telephone.display', 'display');
+    queryBuilder.leftJoinAndSelect('telephone.camera', 'camera');
+    queryBuilder.leftJoinAndSelect('telephone.battery', 'battery');
+
+    const loweredSearchTerm = searchTerm.toLowerCase();
+
+    return queryBuilder
+      .andWhere('LOWER(telephone.modell) LIKE :searchTerm', { searchTerm: `%${loweredSearchTerm}%` })
+      .orWhere('LOWER(telephone.marka) LIKE :searchTerm', { searchTerm: `%${loweredSearchTerm}%` }).getMany();
+
+  }
+
 
   //Ár-teljesítmény szerint!
 
@@ -69,6 +93,7 @@ export class TelephoneService {
     queryBuilder.leftJoinAndSelect('telephone.display', 'display');
     queryBuilder.leftJoinAndSelect('telephone.camera', 'camera');
     queryBuilder.leftJoinAndSelect('telephone.battery', 'battery');
+
 
     if (termekSzuroDto.markak && termekSzuroDto.markak.length > 0) {
       queryBuilder.andWhere('telephone.marka IN (:...markak)', { markak: termekSzuroDto.markak });
@@ -154,17 +179,11 @@ export class TelephoneService {
       queryBuilder.andWhere('battery.vezetek_nelkuli_toltes = :vezetekNelkuliToltes', { vezetekNelkuliToltes: termekSzuroDto.vezetekNelkuliToltes });
     }
 
-    
+
 
 
     return queryBuilder.getMany();
   }
-
-
-
-
-
-
 
 
 }
