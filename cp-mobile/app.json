@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "cp-telefon",
-    "slug": "cp-telefon",
-    "scheme": "cp-telefon",
+    "name": "cp-mobile",
+    "slug": "cp-mobile",
+    "scheme": "cp-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
