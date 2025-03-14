@@ -1,4 +1,4 @@
-// eslint-disable-next-line prettier/prettier
+
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { PhoneSpecs } from "./phone-specs.entity";
 import { OS } from "./os.entity";

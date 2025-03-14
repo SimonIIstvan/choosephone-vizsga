@@ -1,20 +1,20 @@
 <main class="register-panel">
     <app-navbar></app-navbar>
     <div data-aos="zoom-in-up" class="res-container form-center">
-        <form class="" action="">
+        <form (ngSubmit)="register()">
             <h1 class="register-title">Regisztráció</h1>
             <div class="container">
-                <div class="input-email">
-                    <label for="email" class="label">email</label>
-                    <input type="email" name="email" id="email">
+                <div class="input-username">
+                    <label for="username" class="label">felhasználónév</label>
+                    <input [(ngModel)]="username" name="username" type="text" name="username" id="username">
                 </div>
                 <div class="input-password">
                     <label for="password" class="label">jelszó</label>
-                    <input type="password" name="password" id="password">
+                    <input [(ngModel)]="password" name="password" id="password">
                 </div>
                 <div class="input-password">
-                    <label for="password" class="label">jelszó ismét</label>
-                    <input type="password" name="password" id="password">
+                    <label for="passwordAgain" class="label">jelszó ismét</label>
+                    <input [(ngModel)]="passwordAgain" name="passwordAgain" id="password-again">
                 </div>
                 <div class="submit-button">
                     <button type="submit">Regisztráció</button>

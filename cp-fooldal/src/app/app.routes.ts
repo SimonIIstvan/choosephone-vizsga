@@ -4,6 +4,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterPanelComponent } from './register-panel/register-panel.component';
 import { TelephonesComponent } from './telephones/telephones.component';
 import { TelephoneDetailComponent } from './telephones/telephone-detail/telephone-detail.component';
+import { AuthGuard } from './services/guard/auth.guard';
 
 export const routes: Routes = [
     {
@@ -12,7 +13,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'telefonok', component: TelephonesComponent
+        path: 'telefonok', component: TelephonesComponent, canActivate: [AuthGuard]
     },
     
     {
