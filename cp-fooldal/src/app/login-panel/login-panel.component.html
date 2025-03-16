@@ -1,16 +1,16 @@
 <main class="login-panel">
     <app-navbar></app-navbar>
     <div data-aos="zoom-in-up" class="res-container form-center">
-        <form class="" action="">
+        <form (ngSubmit)="login()">
             <h1 class="login-title">Bejelentkezés</h1>
             <div class="container">
-                <div class="input-email">
-                    <label for="email" class="label">email</label>
-                    <input type="email" name="email" id="email">
+                <div class="input-username">
+                    <label for="username" class="label">felhasználónév</label>
+                    <input [(ngModel)]="username" type="text" name="username" id="username">
                 </div>
                 <div class="input-password">
                     <label for="password" class="label">jelszó</label>
-                    <input type="password" name="password" id="password">
+                    <input [(ngModel)]="password" type="text" name="password" id="password">
                 </div>
                 <div class="submit-button">
                     <button type="submit">Bejelentkezés</button>

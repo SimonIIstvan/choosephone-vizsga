@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { User } from '../models/user.model';
 
 
 
@@ -8,25 +9,48 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  private user = new BehaviorSubject<User | null>(null);
+  private loggedIn = new BehaviorSubject<boolean>(false);
   private apiUrl = 'http://localhost:3000';
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
+
+  isLoggedIn(): Observable<boolean> {
+    return this.loggedIn.asObservable();
+  }
+
+  getUser(): Observable<any> {
+    return this.user.asObservable();
+  }
 
   login(username: string, password: string) {
-    return this.http.post(`${this.apiUrl}/auth/login`, { username, password });
+    return this.http.post(`${this.apiUrl}/auth/login`, { username, password }, { withCredentials: true }).pipe(
+      tap(() => this.checkStatus())
+        
+    );
   }
 
   logout() {
-    return this.http.post(`${this.apiUrl}/auth/logout`, {});
+    return this.http.post(`${this.apiUrl}/auth/logout`, { withCredentials: true });
   }
 
   register(username: string, password: string) {
     return this.http.post(`${this.apiUrl}/auth/register`, { username, password });
   }
 
-  getStatus(): Observable<boolean> {
-    return this.http.get(`${this.apiUrl}/auth/status`).pipe(
-      map((response: any) => response.loggedIn)
-      
-    );
+  checkStatus(): void {
+    this.http.get<{ loggedIn: boolean; user?: User }>(`${this.apiUrl}/auth/status`).pipe(
+      tap(response => {
+        this.loggedIn.next(response.loggedIn);
+        this.user.next(response.user || null);
+      })
+    ).subscribe();
   }
+
+  getMe(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/auth/me`, { withCredentials: true });
+  }
+
+
+
 }

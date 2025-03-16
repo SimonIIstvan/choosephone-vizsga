@@ -21,4 +21,8 @@ export class AuthService {
         }
         return null;
     }
+
+    async findUserById(id: number): Promise<User> {
+        return this.usersRepository.findOne({ where: { id } });
+    }
 }

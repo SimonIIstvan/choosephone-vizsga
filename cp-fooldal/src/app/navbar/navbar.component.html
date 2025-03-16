@@ -10,8 +10,9 @@
         <li><a href="#">Rólunk</a></li>
     </div>
     <div class="nav-user">
-        <li><a routerLink="/bejelentkezes" ><i
-                    class="fa-solid fa-user"></i></a></li>
+        <li [hidden]="isLoggedIn"><a routerLink="/bejelentkezes"><i class="fa-solid fa-user"></i></a></li>
+        <p-menu #menu [model]="items" [popup]="true" />
+        <p-avatar (click)="menu.toggle($event)" [hidden]="!isLoggedIn" label="{{userMonogram}}" shape="circle" />
         <button (click)="toggleNavbar()" class="bars"><i
                 [ngClass]="isNavbarOpened ? 'fa-solid fa-x' : 'fa-solid fa-bars'" class=""></i></button>
     </div>
@@ -21,12 +22,10 @@
         <li><a href="#">Csak neked<i class="fa-solid fa-fire"></i></a></li>
         <li><a href="#">Kapcsolat</a></li>
         <li><a href="#">Rólunk</a></li>
-        <li><a routerLink="/bejelentkezes">Bejelentkezés<i
-                    class="fa-solid fa-user"></i></a>
+        <li><a routerLink="/bejelentkezes">Bejelentkezés<i class="fa-solid fa-user"></i></a>
         </li>
     </div>
 
 </header>
 
 <router-outlet></router-outlet>
-

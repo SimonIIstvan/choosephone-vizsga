@@ -1,26 +1,32 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { catchError, map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(): Observable<boolean> {
-    return this.authService.getStatus().pipe(
-      take(1),
-      map((isLoggedIn: boolean) => {
-        if (isLoggedIn) {
-          return true; // Engedélyezi a navigációt
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.authService.getMe().pipe(
+      map(user => {
+        if (user) {
+          return true; // A felhasználó be van jelentkezve, az útvonal betölthető
         } else {
-          this.router.navigate(['/bejelentkezes']); // Átirányít a bejelentkezési oldalra
+          this.router.navigate(['/bejelentkezes']); // Nincs bejelentkezve, átirányítás a bejelentkező oldalra
           return false;
         }
+      }),
+      catchError(() => {
+        this.router.navigate(['/bejelentkezes']); // Hiba esetén (pl. 401) is átirányítunk
+        return [false];
       })
     );
   }
+  
 }

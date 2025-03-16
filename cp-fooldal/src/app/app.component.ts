@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import * as AOS from 'aos';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import * as AOS from 'aos';
 export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   title = 'cp-fooldal';
 
-  constructor(private router: Router, private cd: ChangeDetectorRef) { }
+  constructor(private router: Router, private cd: ChangeDetectorRef, private authService: AuthService) { }
 
   ngOnInit() {
     AOS.init({
@@ -27,6 +28,16 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
         }, 100); // Kis késleltetés, hogy a DOM biztosan betöltődjön
       }
     });
+
+      this.authService.getMe().subscribe((user) => {
+        if (user) {
+          console.log('Bejelentkezve:', user);
+        }
+      },
+      (error) => {
+        console.error('Hiba a bejelentkezéskor vagy nincs bejelentkezve:', error);
+      });
+
   }
 
   ngAfterViewInit(): void {

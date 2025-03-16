@@ -17,7 +17,7 @@ export class MainPageComponent implements OnInit  {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    console.log(this.authService.getStatus().subscribe(res => console.log(res)));
+    
   }
   
 }
