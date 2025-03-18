@@ -5007,7 +5007,7 @@ export const MyPreset = definePreset(Aura, {
                         }
                     },
                     success: {
-                        background: "color-mix(in srgb, {green.50}, transparent 5%)",
+                        background: "color-mix(in srgb, {purple.50}, transparent 10%)",
                         borderColor: "{green.200}",
                         color: "{green.600}",
                         detailColor: "{surface.700}",

@@ -29,6 +29,12 @@ export class AuthController {
         return user;
     }
 
+    @Get('logout')
+    logout(@Session() session: any) {
+        session.destroy(); // Session törlése
+        return { message: 'Sikeres kijelentkezés' };
+    }
+
     @Post('register')
     async register(@Body() body: { username: string; password: string }) {
         return this.authService.register(body.username, body.password);
@@ -45,9 +51,5 @@ export class AuthController {
         return { message: 'Sikeres bejelentkezés' };
     }
 
-    @Post('logout')
-    logout(@Session() session: any) {
-        session.destroy(); // Session törlése
-        return { message: 'Sikeres kijelentkezés' };
-    }
+
 }

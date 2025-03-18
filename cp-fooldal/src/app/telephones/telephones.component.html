@@ -15,7 +15,7 @@
     </div>
     <section class="main-layout res-container">
         <p-scrollpanel class="filter-panel"
-            [style]="{width: '20rem', height: '70vh', border: '1px solid', position: 'sticky', overflow: 'auto',  top: '1rem', backgroundColor: '#f6f7fbee', borderRadius: '5px'}">
+            [style]="{width: '20rem', height: '70vh', border: '1px solid', position: 'sticky', overflow: 'auto',  top: '1rem', backgroundColor: '#f6f7fbee', borderRadius: '5px', overflowX: 'hidden'}">
             <div class="rendezes-select">
                 <p-select [options]="rendezesek" [(ngModel)]="kivalaszottRendezes" optionLabel="rendezes_tipus"
                     placeholder="Rendezés..." [dt]="elrendezes" />
@@ -160,8 +160,7 @@
             </div>
 
             <div class="filter-gomb">
-                <p-button (click)="gombKattintas()"
-                    [style]="{width: '100%', 'margin-top': '2rem' }">Szűrés</p-button>
+                <p-button (click)="gombKattintas()" [style]="{width: '100%', 'margin-top': '2rem' }">Szűrés</p-button>
             </div>
 
 
@@ -169,6 +168,32 @@
 
         <div class="telephone-list">
             <app-phonecard *ngFor="let phone of telephones" [phone]="phone"></app-phonecard>
+        </div>
+
+
+        <div class="telephone-compare-list">
+            <div *ngIf="isCompareOpened" class="compare-box">
+                <p *ngIf="isCompareListEmpty">Itt még nincs semmi..</p>
+                <div *ngFor="let phone of compareList" class="compare-item">
+                    <div class="compare-image">
+                        <img src="{{phone.phone.kepUrl}}" alt="">
+                    </div>
+                    <p>{{phone.phone.marka}} {{phone.phone.modell}}</p>
+                    <i (click)="removeFromCompare(phone.telephoneId)" class="fa-solid fa-x"></i>
+                </div>
+                
+                <button class="mehet-button">
+                    Mehet
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+            <button class="compare-button" (click)="openCompareList()" type="button">Összehasonlító lista<i
+                    [style]="{transform: isCompareOpened ? 'rotate(180deg)' : 'rotate(0deg)'}"
+                    class="fa-solid fa-chevron-up"></i></button>
         </div>
     </section>
 

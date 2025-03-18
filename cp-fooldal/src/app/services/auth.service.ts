@@ -30,8 +30,8 @@ export class AuthService {
     );
   }
 
-  logout() {
-    return this.http.post(`${this.apiUrl}/auth/logout`, { withCredentials: true });
+  logout(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/auth/logout`, { withCredentials: true });
   }
 
   register(username: string, password: string) {

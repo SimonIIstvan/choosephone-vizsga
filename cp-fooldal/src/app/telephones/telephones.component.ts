@@ -21,6 +21,7 @@ import { PanelModule } from 'primeng/panel';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import * as AOS from 'aos';
+import { CompareService } from '../services/compare.service';
 
 interface rendezesTipus {
   rendezes_tipus: string;
@@ -36,6 +37,8 @@ interface rendezesTipus {
   encapsulation: ViewEncapsulation.None
 })
 export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
+  compareList: any[] = [];
+  isCompareListEmpty: boolean = true;
   telephones: Telephone[] = [];
   filter: TermekSzuro = {};
   rendezesek: rendezesTipus[] | undefined;
@@ -63,7 +66,7 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   kivalaszottRendezes: rendezesTipus | undefined;
 
-  constructor(private telephonesService: TelephonesService) { }
+  constructor(private telephonesService: TelephonesService, private compareService: CompareService) { }
 
   ngAfterViewInit() {
     AOS.refreshHard();
@@ -77,11 +80,11 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
       { rendezes_tipus: 'Megjelenési év szerint növekvő' }
     ]
 
-  
 
 
 
-    
+
+
 
     this.telephonesService.getAllTelephones().subscribe((data: Telephone[]) => {
       data.forEach(phone => {
@@ -91,10 +94,27 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     })
 
-
+    this.loadCompare();
 
     this.loadTelephones();
     AOS.refreshHard();
+  }
+
+  removeFromCompare(telephoneId: number) {
+    this.compareService.removeFromCompare(telephoneId).subscribe(() => {
+      this.loadCompare();
+    })
+
+
+  }
+
+  loadCompare() {
+    this.compareService.getCompare().subscribe((data: any) => {
+      if (data) {
+        this.isCompareListEmpty = false;
+        this.compareList = data;
+      }
+    });
   }
 
 
@@ -194,10 +214,10 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
 
-    
+
     this.filter.magok = [...new Set(this.magok)];
     this.magok = [];
-    
+
 
     if (this.os.length !== 0) {
       this.filter.operaciosRendszer = this.os;
@@ -224,6 +244,14 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
     trackSize: "5px",
     trackBackground: "#9000ff60",
 
+  }
+
+
+  /* Compare listával kapcs... */
+  isCompareOpened: boolean = false;
+
+  openCompareList() {
+    this.isCompareOpened = !this.isCompareOpened;
   }
 
 

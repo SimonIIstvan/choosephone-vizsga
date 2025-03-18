@@ -5,12 +5,14 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 import { AuthService } from '../services/auth.service';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, RouterLink, RouterOutlet, AvatarModule, MenuModule],
+  imports: [CommonModule, RouterLink, RouterOutlet, AvatarModule, MenuModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
   animations: [
@@ -36,7 +38,7 @@ export class NavbarComponent implements OnInit {
   username: string = "";
   items: MenuItem[] | undefined;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private messageService: MessageService, private router: Router) { }
 
   toggleNavbar(): void {
     this.isNavbarOpened = !this.isNavbarOpened;
@@ -65,12 +67,32 @@ export class NavbarComponent implements OnInit {
           },
           {
             label: 'Kijelentkezés',
-            icon: 'pi pi-sign-out'
+            icon: 'pi pi-sign-out',
+            command: () => this.logout()
           }
         ]
       }
     ];
 
+  }
+
+
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.isLoggedIn = false;
+      console.log("Kijelentkezés");
+      
+    }); 
+
+    setTimeout(() => {
+      this.messageService.add({ severity: 'success', summary: 'Sikeres kijelentkezés', detail: 'Sikeresen kijelentkeztél a fiókodból!' });
+    }, 1500)
+
+    setTimeout(() => {
+      this.router.navigate(['/bejelentkezes']);
+    }, 3500)
+
+    
   }
 
 

@@ -80,6 +80,11 @@
     font-weight: 500;
 }
 
+.phone-title:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 .phone-add {
     height: 3rem;
     flex: 1;

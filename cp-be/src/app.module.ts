@@ -12,6 +12,9 @@ import { BatteryModule } from './telephone/battery/battery/battery.module';
 import { User } from './telephone/telephone/entities/user.entity';
 import { AuthController } from './telephone/auth/auth/auth.controller';
 import { AuthService } from './telephone/auth/auth/auth.service';
+import { CompareController } from './telephone/compare/compare/compare.controller';
+import { CompareService } from './telephone/compare/compare/compare.service';
+import { CompareItem } from './telephone/telephone/entities/compare-item.entity';
 
 @Module({
   imports: [
@@ -21,7 +24,7 @@ import { AuthService } from './telephone/auth/auth/auth.service';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, CompareItem]),
     TelephoneModule,
     PhoneSpecsModule,
     OsModule,
@@ -29,8 +32,8 @@ import { AuthService } from './telephone/auth/auth/auth.service';
     CameraModule,
     BatteryModule
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
+  controllers: [AppController, AuthController, CompareController],
+  providers: [AppService, AuthService, CompareService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

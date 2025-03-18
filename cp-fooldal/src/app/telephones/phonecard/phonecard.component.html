@@ -1,16 +1,16 @@
-<div class="phone-card" [routerLink]="['/telefonok', phone.id]">
+<div class="phone-card">
     <div class="image-container">
         <img src="{{phone.kepUrl}}" alt="telefonkep">
     </div>
     <div class="phone-info">
         <div class="phone-row-top">
-            <div class="phone-title">
+            <div [routerLink]="['/telefonok', phone.id]" class="phone-title">
                 <h3>{{phone.marka}} {{phone.modell}}</h3>
                 <p>{{phone.ar| currency: ' ' : 'symbol' : '1.0-1'}} Ft</p>
 
             </div>
             <div class="phone-add"> 
-                <i class="fa-solid fa-plus"></i>
+                <i (click)="addToCompare(phone.id)" class="fa-solid fa-plus"></i>
             </div>
         </div>
         <div class="phone-specs">
