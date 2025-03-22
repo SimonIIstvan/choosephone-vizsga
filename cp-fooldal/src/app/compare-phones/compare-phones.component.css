@@ -1,0 +1,202 @@
+.background{
+    min-height: 100vh;
+    background-color: #171e37;
+    background-image: url(/images/compare-waves.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Fira Sans', serif;
+}
+
+.telephone-names{
+    padding-top: 2rem;
+    color: #f3f3f3f1;
+    text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: .75rem;
+}
+
+.brand-name1{
+    color: #b05febea;  
+}
+
+.brand-name2{
+    color: #ff8c00;
+}
+
+.vs{
+    font-weight: 800;
+    color: #f3f3f3;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: oblique;
+}
+
+.telephone-images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12rem;
+}
+
+.telephone-image{
+    width: 20rem;
+    position: relative;
+}
+
+.telephone-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.pricetag1{
+    font-weight: 500;
+    color: #f3f3f3;
+    background-color: #b05febea;
+    position: absolute;
+    text-align: center;
+    border: 1px solid #f0d5d5;
+    border-radius: 10px;
+    padding-inline: .5rem;
+    padding-block: .25rem;
+    top: 2rem;
+    right: 0;
+
+}
+
+.pricetag2{
+    font-weight: 500;
+    color: #f3f3f3;
+    background-color: #ff8c00;
+    position: absolute;
+    text-align: center;
+    border: 1px solid #f0d5d5;
+    border-radius: 10px;
+    padding-inline: .5rem;
+    padding-block: .25rem;
+    top: 2rem;
+    right: 0;
+
+}
+
+.telephone-infos-container{
+    padding: 1rem;
+    margin: 0 auto;
+    margin-top: .5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px solid rgb(255, 33, 255);
+    width: 70vw;
+}
+
+.year-info{
+    border: 2px solid yellow;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+    height: 5rem;
+}
+
+.phone1-year, .phone2-year{
+    color: #f3f3f3;
+    font-weight: 400;
+    border: 1px solid #ccadcae7;
+    border-radius: 10px;
+    padding-inline: .7rem;
+    padding-block: .45rem;
+    text-align: center;
+}
+
+.phone1-year{
+    background-color: #b05febea;
+}
+
+.phone2-year{
+    background-color: #ff8c00;
+}
+
+.info-card{
+    background-color: #f3f3f3f1;
+    box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.10);
+    border-radius: 5px;
+    padding: .25rem;
+}
+
+.info-boxes{
+    border: 2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    padding: .5rem;
+}
+
+.info-box1, .info-box2, .info-box3, .info-box4{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 30rem;
+    height: 10rem;
+    padding: .75rem;
+    background-color: #f0f0f0f6;
+    border: 1px solid #ccadcae7;
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+
+}
+
+.info-boxes i{
+    color: #9500ffbe;
+}
+
+.info-boxes i:hover{
+    color: #9500ff;
+}
+
+.info-title h2{
+    font-weight: 400;
+}
+
+.info-title{
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-top: .5rem;
+}
+
+
+
+
+
+/* Media query-k */
+
+@media screen and (max-width: 960px) {
+    .telephone-images{
+        gap: 6rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .telephone-images{
+        gap: 4rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .telephone-images{
+        gap: 2rem;
+    }
+
+    .pricetag{
+        font-size: .8rem;
+    }
+}
+

@@ -23,7 +23,7 @@
         <li><a href="#">Csak neked<i class="fa-solid fa-fire"></i></a></li>
         <li><a href="#">Kapcsolat</a></li>
         <li><a href="#">Rólunk</a></li>
-        <li><a routerLink="/bejelentkezes">Bejelentkezés<i class="fa-solid fa-user"></i></a>
+        <li *ngIf="!isLoggedIn"><a routerLink="/bejelentkezes">Bejelentkezés<i class="fa-solid fa-user"></i></a>
         </li>
     </div>
 

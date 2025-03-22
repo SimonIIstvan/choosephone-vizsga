@@ -5,6 +5,7 @@ import { RegisterPanelComponent } from './register-panel/register-panel.componen
 import { TelephonesComponent } from './telephones/telephones.component';
 import { TelephoneDetailComponent } from './telephones/telephone-detail/telephone-detail.component';
 import { AuthGuard } from './services/guard/auth.guard';
+import { ComparePhonesComponent } from './compare-phones/compare-phones.component';
 
 export const routes: Routes = [
     {
@@ -27,5 +28,9 @@ export const routes: Routes = [
 
     {
         path: 'telefonok/:id', component: TelephoneDetailComponent
+    },
+
+    {
+        path: 'compare/:telephoneId1/:telephoneId2', component: ComparePhonesComponent
     }
 ];

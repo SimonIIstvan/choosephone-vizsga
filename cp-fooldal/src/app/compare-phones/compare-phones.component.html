@@ -1,0 +1,341 @@
+<app-navbar></app-navbar>
+<main class="background">
+    <div class="telephone-names">
+        <h1><span class="brand-name1">{{phone1.marka}}</span> {{phone1.modell}}</h1>
+        <h2 class="vs">VS</h2>
+        <h1><span class="brand-name2">{{phone2.marka}}</span> {{phone2.modell}}</h1>
+    </div>
+
+    <div class="telephone-images">
+        <div class="telephone-image">
+            <img src="{{phone1.kepUrl}}" alt="">
+            <p class="pricetag1">{{phone1.ar}} Ft</p>
+        </div>
+        <div class="telephone-image">
+            <img src="{{phone2.kepUrl}}" alt="">
+            <p class="pricetag2">{{phone2.ar}} Ft</p>
+        </div>
+    </div>
+
+    <div class="telephone-infos-container">
+        <div class="year-info">
+            <h2 class="phone1-year">Megjelenési év: {{phone1.megjelenes_ev}}</h2>
+            <h2 class="phone2-year">Megjelenési év: {{phone2.megjelenes_ev}}</h2>
+        </div>
+
+        <div class="info-card">
+            <div class="info-title">
+                <h2>Specifikációk</h2>
+            </div>
+            <div class="info-boxes">
+                <div class="info-box1">
+                    <h3>Memória</h3>
+                    <p-progressbar [value]="phone1.specs.memory * 5.5" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.specs.memory}}GB</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.specs.memory * 5.5" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.specs.memory}}GB</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box2">
+                    <h3>Magok száma</h3>
+                    <p-progressbar [value]="phone1.specs.magok_szama * 8.5" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.specs.magok_szama}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.specs.magok_szama * 8.5" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.specs.magok_szama}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box3">
+                    <h3>Tárhely</h3>
+                    <p-progressbar [value]="phone1.specs.tarolo_kapacitas * 0.15" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.specs.tarolo_kapacitas}}GB</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.specs.tarolo_kapacitas * 0.15" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.specs.tarolo_kapacitas}}GB</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box4">
+                    <h3>AnTuTu benchmark <i
+                            pTooltip="Az Antutu Benchmark egy tesztelő alkalmazás, amely a készülék erőforrásait (processzor, memória, grafikus kártya) vizsgálja. Az eredményt számszerű értékként jelenítik meg, ahol magasabb érték jobb teljesítményt jelent."
+                            tooltipPosition="right" class="fa-solid fa-circle-question"></i></h3>
+                    <p-progressbar [value]="phone1.specs.antutuscore / 33000" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.specs.antutuscore}}pt</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.specs.antutuscore / 33000" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.specs.antutuscore}}pt</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="info-card">
+            <div class="info-title">
+                <h2>Operációs rendszer</h2>
+            </div>
+            <div class="info-boxes">
+                <div class="info-box1">
+                    <h3>OS</h3>
+                    <p-progressbar [value]="100" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.os.os}} {{phone1.os.verzio}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="100" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.os.os}} {{phone2.os.verzio}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box2">
+                    <h3>User Interface</h3>
+                    <p-progressbar [value]="100" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.os.ui}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="100" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.os.ui}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="info-card">
+            <div class="info-title">
+                <h2>Kijelző</h2>
+            </div>
+            <div class="info-boxes">
+                <div class="info-box1">
+                    <h3>Kijelző méret</h3>
+                    <p-progressbar [value]="phone1.display.kijelzo_meret * 14" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.display.kijelzo_meret}}"</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.display.kijelzo_meret * 14" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.display.kijelzo_meret}}"</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box2">
+                    <h3>Képfrissítés</h3>
+                    <p-progressbar [value]="phone1.display.kepfrissites * 0.55" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.display.kepfrissites}}hz</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.display.kepfrissites * 0.55" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.display.kepfrissites}}hz</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box3">
+                    <h3>Felbontás magasság</h3>
+                    <p-progressbar [value]="phone1.display.felbontas_magassag / 35" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.display.felbontas_magassag}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.display.felbontas_magassag / 35" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.display.felbontas_magassag}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box4">
+                    <h3>Felbontás szélesség</h3>
+                    <p-progressbar [value]="phone1.display.felbontas_szelesseg / 16" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.display.felbontas_szelesseg}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.display.felbontas_szelesseg / 16" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.display.felbontas_szelesseg}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box1">
+                    <h3>Panel típusa</h3>
+                    <p-progressbar [value]="100" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.display.panel_tipus}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="100" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.display.panel_tipus}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box2">
+                    <h3>Védőüveg</h3>
+                    <p-progressbar [value]="100" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.display.vedouveg}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="100" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.display.vedouveg}}</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="info-card">
+            <div class="info-title">
+                <h2>Kamera</h2>
+            </div>
+            <div class="info-boxes">
+                <div class="info-box1">
+                    <h3>Hátlapi kamera</h3>
+                    <p-progressbar [value]="phone1.camera.fo_kamera * 0.49" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.camera.fo_kamera}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.camera.fo_kamera * 0.49" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.camera.fo_kamera}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box2">
+                    <h3>Előlapi kamera</h3>
+                    <p-progressbar [value]="phone1.camera.szelfi_kamera * 2.5" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.camera.szelfi_kamera}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.camera.szelfi_kamera * 2.5" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.camera.szelfi_kamera}}px</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box3">
+                    <h3>Videó felvétel</h3>
+                    <p-progressbar [value]="phone1.camera.video_felvetel * 11"  [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.camera.video_felvetel}}K{{phone1.camera.video_fps}}fps</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.camera.video_felvetel * 11" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.camera.video_felvetel}}K{{phone2.camera.video_fps}}fps</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box4">
+                    <h3>AI támogatás</h3>
+                    <p-progressbar [value]="phone1.camera.ai_tamogatas * 100" [dt]="bar1">
+                        <ng-template #content>
+                            <span *ngIf="phone1.camera.ai_tamogatas">
+                                Van
+                            </span>
+                            <span style="color: black" *ngIf="!phone1.camera.ai_tamogatas">
+                                Nincs
+                            </span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.camera.ai_tamogatas * 100" [dt]="bar2">
+                        <ng-template #content>
+                            <span *ngIf="phone2.camera.ai_tamogatas">
+                                Van
+                            </span>
+                            <span style="color: black" *ngIf="!phone2.camera.ai_tamogatas">
+                                Nincs
+                            </span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="info-card">
+            <div class="info-title">
+                <h2>Akkumulátor</h2>
+            </div>
+            <div class="info-boxes">
+                <div class="info-box1">
+                    <h3>Akkumulátor kapacitás</h3>
+                    <p-progressbar [value]="phone1.battery.akkumulator_kapacitas / 70" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.battery.akkumulator_kapacitas}}mAh</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.battery.akkumulator_kapacitas / 70" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.battery.akkumulator_kapacitas}}mAh</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box2">
+                    <h3>Vezetékes töltés</h3>
+                    <p-progressbar [value]="phone1.battery.toltes * 0.8" [dt]="bar1">
+                        <ng-template #content>
+                            <span>{{phone1.battery.toltes}}W</span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="phone2.battery.toltes* 0.8" [dt]="bar2">
+                        <ng-template #content>
+                            <span>{{phone2.battery.toltes}}W</span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="info-box3">
+                    <h3>Vezeték nélküli töltés</h3>
+                    <p-progressbar [value]="100"  [dt]="bar1">
+                        <ng-template #content>
+                            <span>
+                                <p *ngIf="phone1.battery.vezetek_nelkuli_toltes">Van</p>
+                                <p *ngIf="!phone1.battery.vezetek_nelkuli_toltes">Nincs</p>
+                            </span>
+                        </ng-template>
+                    </p-progressbar>
+                    <p-progressbar [value]="100"  [dt]="bar2">
+                        <ng-template #content>
+                            <span>
+                                <p *ngIf="phone2.battery.vezetek_nelkuli_toltes">Van</p>
+                                <p *ngIf="!phone2.battery.vezetek_nelkuli_toltes">Nincs</p>
+                            </span>
+                        </ng-template>
+                    </p-progressbar>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</main>

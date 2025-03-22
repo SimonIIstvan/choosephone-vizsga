@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import * as AOS from 'aos';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FooterComponent } from '../footer/footer.component';
@@ -16,12 +16,13 @@ export class LoginPanelComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
   
   login() {
     this.authService.login(this.username, this.password).subscribe(
       () => {
         alert('Sikeres bejelentkezés!');
+        this.router.navigate(['/']);
       },
       (error) => {
         console.error('Hiba a bejelentkezéskor:', error);

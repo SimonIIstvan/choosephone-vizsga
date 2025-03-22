@@ -62,10 +62,6 @@ export class NavbarComponent implements OnInit {
         label: "Profil",
         items: [
           {
-            label: 'Refresh',
-            icon: 'pi pi-refresh'
-          },
-          {
             label: 'Kijelentkezés',
             icon: 'pi pi-sign-out',
             command: () => this.logout()
@@ -85,8 +81,8 @@ export class NavbarComponent implements OnInit {
     }); 
 
     setTimeout(() => {
-      this.messageService.add({ severity: 'success', summary: 'Sikeres kijelentkezés', detail: 'Sikeresen kijelentkeztél a fiókodból!' });
-    }, 1500)
+      this.messageService.add({ severity: 'success', summary: 'Sikeres kijelentkezés', detail: 'Sikeresen kijelentkeztél a fiókodból!', life: 5000 });  
+    }, 1000)
 
     setTimeout(() => {
       this.router.navigate(['/bejelentkezes']);

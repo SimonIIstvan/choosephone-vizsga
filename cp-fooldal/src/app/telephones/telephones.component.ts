@@ -20,8 +20,10 @@ import { AccordionModule } from 'primeng/accordion';
 import { PanelModule } from 'primeng/panel';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { DrawerModule } from 'primeng/drawer';
 import * as AOS from 'aos';
 import { CompareService } from '../services/compare.service';
+import { Router } from '@angular/router';
 
 interface rendezesTipus {
   rendezes_tipus: string;
@@ -31,7 +33,7 @@ interface rendezesTipus {
   selector: 'app-telephones',
   imports: [ButtonModule, NavbarComponent, PhonecardComponent,
     ScrollPanelModule, SelectModule, Select, FormsModule, SliderModule, CommonModule, MultiSelectModule, InputNumberModule, AccordionModule, PanelModule,
-    CheckboxModule, RadioButtonModule],
+    CheckboxModule, RadioButtonModule, DrawerModule],
   templateUrl: './telephones.component.html',
   styleUrl: './telephones.component.css',
   encapsulation: ViewEncapsulation.None
@@ -39,6 +41,7 @@ interface rendezesTipus {
 export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
   compareList: any[] = [];
   isCompareListEmpty: boolean = true;
+  hamburgerOpen: boolean = false;
   telephones: Telephone[] = [];
   filter: TermekSzuro = {};
   rendezesek: rendezesTipus[] | undefined;
@@ -66,7 +69,7 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   kivalaszottRendezes: rendezesTipus | undefined;
 
-  constructor(private telephonesService: TelephonesService, private compareService: CompareService) { }
+  constructor(private telephonesService: TelephonesService, private compareService: CompareService, private router: Router) { }
 
   ngAfterViewInit() {
     AOS.refreshHard();
@@ -105,6 +108,19 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
       this.loadCompare();
     })
 
+
+  }
+
+  onCompareClick() {
+    const selectedPhones = this.compareService.getSelectedPhones();
+    if (selectedPhones.length === 2) {
+      this.router.navigate(['/compare', selectedPhones[0], selectedPhones[1]]);
+    }
+    else{
+      alert('Kérlek, válassz ki pontosan két telefont az összehasonlításhoz!');
+    }
+
+    console.log(selectedPhones);
 
   }
 
@@ -252,6 +268,7 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openCompareList() {
     this.isCompareOpened = !this.isCompareOpened;
+    this.loadCompare();
   }
 
 

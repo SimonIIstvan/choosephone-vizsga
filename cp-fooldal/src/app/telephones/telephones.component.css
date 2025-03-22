@@ -78,7 +78,32 @@
     margin-top: 1rem;
     gap: 1.5rem;
     overflow-x: hidden;
+    font-family: 'Fira Sans', serif;
+    
 }
+
+.filter-panel-hamburger{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1.5rem;
+    overflow-x: hidden;
+    font-family: 'Fira Sans', serif;
+}
+
+p-drawer{
+    font-family: 'Fira Sans', serif;
+}
+
+.p-drawer-title{
+    font-family: 'Fira Sans', serif;
+}
+
+
+
+
 
 .rendezes-select {
     margin: 0 auto;
@@ -242,6 +267,10 @@ p-select .p-select-list-container {
     margin-top: 1rem;
     padding-bottom: 5rem;
     padding-top: 1rem;
+
+    @media screen and (max-width: 960px) {
+        width: 100%;  
+    }
 }
 
 .compare-item {
@@ -343,6 +372,35 @@ p-select .p-select-list-container {
       left: 100%;
     }
   }
+
+/* Szűrő gomb mobilon */
+
+.filter-button{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fira Sans', serif;
+    background: #f3f3f3f8;
+    border: 1px solid #9000ffd2;
+    border-radius: 10px;
+    padding: .5rem 4rem;
+    font-size: 1.4rem;
+    color: #9200ff;
+    transition: all ease-in-out .15s;
+    text-align: center;
+    gap: .5rem;
+}
+
+
+.filter-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    position: fixed;
+    bottom: 2.25%;
+    left: 1rem;
+}
   
 
 
@@ -354,7 +412,7 @@ app-phonecard {
     }
 
     @media screen and (max-width: 1024px) {
-        width: calc(100% - 2rem);
+        width: calc(100% - 1rem);
     }
 
 }
@@ -362,6 +420,27 @@ app-phonecard {
 @media screen and (max-width: 1280px) {
     .res-container {
         max-width: none;
+    }
+
+}
+
+@media screen and (max-width: 960px) {
+    .filter-panel{
+        display: none;
+    }
+
+    .filter-button{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .telephone-compare-list .compare-button{
+        padding: .5rem .25rem;
+    }
+
+    .filter-button{
+        padding: .5rem .1rem;
     }
 
 }

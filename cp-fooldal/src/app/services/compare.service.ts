@@ -6,18 +6,22 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class CompareService {
+  selectedPhones: number[] = [];
 
   private apiUrl = 'http://localhost:3000';
   private compareItemsSubject = new BehaviorSubject<any[]>([]);
   compareItems$ = this.compareItemsSubject.asObservable();
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadCompare();
+   }
 
 
   loadCompare() {
     this.http.get<any[]>(`${this.apiUrl}/compare`).subscribe((data) => {
       this.compareItemsSubject.next(data); // Frissíti a kosár tartalmát
+      this.selectedPhones = data.map(item => item.telephoneId);
     });
   }
 
@@ -35,5 +39,22 @@ export class CompareService {
     return this.http.delete(`${this.apiUrl}/compare/${telephoneId}`).pipe(
       tap(() => this.loadCompare())
     );
+  }
+
+  /* Összehasonlítás két ttelefon ID alapján */
+
+  addPhone(telephoneId: number) {
+    if (this.selectedPhones.length < 2 && !this.selectedPhones.includes(telephoneId)) {
+      this.selectedPhones.push(telephoneId);
+    }
+  }
+
+
+  getSelectedPhones(): number[] {
+    return this.selectedPhones;
+  }
+
+  clearSelection() {
+    this.selectedPhones = [];
   }
 }

@@ -70,6 +70,10 @@ header {
 .nav-user {
 
     padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
 }
 
 .nav-user li {

@@ -2273,7 +2273,7 @@ export const MyPreset = definePreset(Aura, {
             },
             title: {
                 fontSize: "1.5rem",
-                fontWeight: "600"
+                fontWeight: "400",
             },
             content: {
                 padding: "0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}"
@@ -3155,10 +3155,10 @@ export const MyPreset = definePreset(Aura, {
                 padding: "0.5rem 0.75rem",
                 gap: "0.5rem",
                 sm: {
-                    padding: "0.375rem 0.625rem"
+                    padding: "0.175rem 0.425rem"
                 },
                 lg: {
-                    padding: "0.625rem 0.875rem"
+                    padding: "0.425rem 0.675rem"
                 }
             },
             text: {
@@ -3782,7 +3782,7 @@ export const MyPreset = definePreset(Aura, {
         },
         progressbar: {
             root: {
-                background: "{content.border.color}",
+                background: "#bebabaf1",
                 borderRadius: "{content.border.radius}",
                 height: "1.25rem"
             },
@@ -5189,11 +5189,12 @@ export const MyPreset = definePreset(Aura, {
         },
         tooltip: {
             root: {
-                maxWidth: "12.5rem",
+                maxWidth: "17.5rem",
                 gutter: "0.25rem",
                 shadow: "{overlay.popover.shadow}",
                 padding: "0.5rem 0.75rem",
-                borderRadius: "{overlay.popover.border.radius}"
+                borderRadius: "{overlay.popover.border.radius}",
+
             },
             colorScheme: {
                 light: {
@@ -5208,7 +5209,7 @@ export const MyPreset = definePreset(Aura, {
                         color: "{surface.0}"
                     }
                 }
-            }
+            },
         },
         ripple: {
             colorScheme: {
