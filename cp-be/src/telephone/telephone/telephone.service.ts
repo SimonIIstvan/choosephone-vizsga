@@ -147,16 +147,16 @@ export class TelephoneService {
       queryBuilder.andWhere('display.kepfrissites IN (:...kepfrissites)', { kepfrissites: termekSzuroDto.kepfrissites });
     }
 
-    if (termekSzuroDto.foKamera) {
-      queryBuilder.andWhere('camera.fo_kamera = :foKamera', { foKamera: termekSzuroDto.foKamera });
+    if (termekSzuroDto.foKamera && termekSzuroDto.foKamera.length > 0) {
+      queryBuilder.andWhere('camera.fo_kamera IN (:...foKamera)', { foKamera: termekSzuroDto.foKamera });
     }
 
-    if (termekSzuroDto.szelfiKamera) {
-      queryBuilder.andWhere('camera.szelfi_kamera = :szelfiKamera', { szelfiKamera: termekSzuroDto.szelfiKamera });
+    if (termekSzuroDto.szelfiKamera && termekSzuroDto.szelfiKamera.length > 0) {
+      queryBuilder.andWhere('camera.szelfi_kamera IN (:...szelfiKamera)', { szelfiKamera: termekSzuroDto.szelfiKamera });
     }
 
-    if (termekSzuroDto.videoFelvetel) {
-      queryBuilder.andWhere('camera.video_felvetel = :videoFelvetel', { videoFelvetel: termekSzuroDto.videoFelvetel });
+    if (termekSzuroDto.videoFelvetel && termekSzuroDto.videoFelvetel.length > 0) {
+      queryBuilder.andWhere('camera.video_felvetel IN (:...videoFelvetel)', { videoFelvetel: termekSzuroDto.videoFelvetel });
     }
 
     if (termekSzuroDto.videoFps) {
@@ -167,12 +167,12 @@ export class TelephoneService {
       queryBuilder.andWhere('camera.ai_tamogatas = :aiTamogatas', { aiTamogatas: termekSzuroDto.aiTamogatas });
     }
 
-    if (termekSzuroDto.akkumulatorKapacitas) {
-      queryBuilder.andWhere('battery.akkumulator_kapacitas = :akkumulatorKapacitas', { akkumulatorKapacitas: termekSzuroDto.akkumulatorKapacitas });
+    if (termekSzuroDto.akkumulatorKapacitas && termekSzuroDto.akkumulatorKapacitas.length > 0) {
+      queryBuilder.andWhere('battery.akkumulator_kapacitas IN (:...akkumulatorKapacitas)', { akkumulatorKapacitas: termekSzuroDto.akkumulatorKapacitas });
     }
 
-    if (termekSzuroDto.toltes) {
-      queryBuilder.andWhere('battery.toltes = :toltes', { toltes: termekSzuroDto.toltes });
+    if (termekSzuroDto.toltes && termekSzuroDto.toltes.length > 0) {
+      queryBuilder.andWhere('battery.toltes IN (:...toltes)', { toltes: termekSzuroDto.toltes });
     }
 
     if (termekSzuroDto.vezetekNelkuliToltes) {

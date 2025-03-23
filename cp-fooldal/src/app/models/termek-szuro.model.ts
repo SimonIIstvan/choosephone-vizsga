@@ -12,12 +12,12 @@ export interface TermekSzuro {
     felbontasSzelesseg?: number;
     felbontasMagassag?: number;
     kepfrissites?: number[];
-    foKamera?: number;
-    szelfiKamera?: number;
-    videoFelvetel?: number;
+    foKamera?: number[];
+    szelfiKamera?: number[];
+    videoFelvetel?: number[];
     videoFps?: number;
     aiTamogatas?: boolean;
-    akkumulatorKapacitas?: number;
-    toltes?: number;
+    akkumulatorKapacitas?: number[];
+    toltes?: number[];
     vezetekNelkuliToltes?: boolean;
 }

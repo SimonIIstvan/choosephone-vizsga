@@ -63,6 +63,48 @@ export class TelephonesService {
       });
     }
 
+    if (filter.kijelzoMeret) {
+      filter.kijelzoMeret.forEach((meret) => {
+        params = params.append('kijelzoMeret', meret.toString());
+      });
+    }
+
+    if (filter.kepfrissites) {
+      filter.kepfrissites.forEach((frissites) => {
+        params = params.append('kepfrissites', frissites.toString());
+      });
+    }
+
+    if (filter.foKamera) {
+      filter.foKamera.forEach((kamera) => {
+        params = params.append('foKamera', kamera.toString());
+      });      
+    }
+
+    if (filter.szelfiKamera) {
+      filter.szelfiKamera.forEach((kamera) => {
+        params = params.append('szelfiKamera', kamera.toString());
+      });      
+    }
+
+    if (filter.videoFelvetel) {
+      filter.videoFelvetel.forEach((felvetel) => {
+        params = params.append('videoFelvetel', felvetel.toString());
+      });
+    }
+
+    if (filter.akkumulatorKapacitas) {
+      filter.akkumulatorKapacitas.forEach((kapacitas) => {
+        params = params.append('akkumulatorKapacitas', kapacitas.toString());
+      })
+    }
+
+    if (filter.toltes) {
+      filter.toltes.forEach((toltes) => {
+        params = params.append('toltes', toltes.toString());
+      })
+    }
+
     if (filter.operaciosRendszer) {
       params = params.append('operaciosRendszer', filter.operaciosRendszer);
     }

@@ -66,6 +66,16 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   os: string = '';
 
+  kijelzoMeret: number[] = [];
+
+  kepfrissites: number[] = [];
+  
+  foKamera: number[] = [];
+  szelfiKamera: number[] = [];
+  videoFelvetel: number[] = [];
+
+  akkumulatorKapacitas: number[] = [];
+  toltes: number[] = [];
 
   kivalaszottRendezes: rendezesTipus | undefined;
 
@@ -234,6 +244,71 @@ export class TelephonesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.filter.magok = [...new Set(this.magok)];
     this.magok = [];
 
+
+    /* Kijelző méret alapján szűrés */
+    if (this.kijelzoMeret.length !== 0) {
+      if (this.kijelzoMeret.find((meret) => meret == 5.5)) {
+        this.kijelzoMeret.push(5.6, 5.7, 5.8, 5.9, 6, 6.1)
+        
+      }
+
+      if (this.kijelzoMeret.find((meret) => meret == 6.2)) {
+        this.kijelzoMeret.push(6.3, 6.4)
+      }
+
+      if (this.kijelzoMeret.find((meret) => meret == 6.5)) {
+        this.kijelzoMeret.push(6.6, 6.7)
+      }
+
+      if (this.kijelzoMeret.find((meret) => meret == 6.7)) {
+        this.kijelzoMeret.push(6.8, 6.9, 7)
+      }
+    }
+
+    this.filter.kijelzoMeret = [...new Set(this.kijelzoMeret)];
+    this.kijelzoMeret = [];
+    console.log(this.filter.kijelzoMeret);
+
+
+    /* Képfrissítés alapján szűrés */
+    if (this.kepfrissites.length !== 0) {
+      this.filter.kepfrissites = this.kepfrissites;
+      this.kepfrissites = [];
+    }
+
+    /* Előlapi kamera alapján szűrés */
+    if (this.foKamera.length !== 0) {
+      this.filter.foKamera = this.foKamera;
+      this.foKamera = [];
+    }
+
+    /* Előlapi kamera alapján szűrés */
+    if (this.szelfiKamera.length !== 0) {
+      this.filter.szelfiKamera = this.szelfiKamera;
+      this.szelfiKamera = [];
+    }
+
+    /* Videófelvétel alapján szűrés */
+    if (this.videoFelvetel.length !== 0) {
+      this.filter.videoFelvetel = this.videoFelvetel;
+      this.videoFelvetel = [];
+      
+    }
+
+    /* Akkumulátorkapacitás alapján szűrés */
+    if (this.akkumulatorKapacitas.length !== 0) {
+      this.filter.akkumulatorKapacitas = this.akkumulatorKapacitas;
+      this.akkumulatorKapacitas = [];
+      
+    }
+
+    /* Töltés alapján szűrés */
+    if (this.toltes.length !== 0) {
+      this.filter.toltes = this.toltes;
+      this.toltes = [];
+      
+    }
+      
 
     if (this.os.length !== 0) {
       this.filter.operaciosRendszer = this.os;
