@@ -2,16 +2,6 @@
     <app-navbar></app-navbar>
     <div class="tag-container res-container">
         <h2>Telefonok összehasonlítása</h2>
-        <div class="tags">
-            <a href="">TOP 10</a>
-            <a href="">ERŐS AKKUMULÁTOR</a>
-            <a href="">GAMING</a>
-            <a href="">STRAPABÍRÓ</a>
-            <a href="">ÖSSZEHAJTHATÓ</a>
-            <a href="">5G</a>
-            <a href="">NAGY KIJELZŐ</a>
-            <a href="">OLCSÓ</a>
-        </div>
     </div>
     <section class="main-layout res-container">
         <p-scrollpanel class="filter-panel"
@@ -406,38 +396,160 @@
                                 </p-panel>
                             </p-accordion-content>
                         </p-accordion-panel>
-
+    
                         <p-accordion-panel value="2">
                             <p-accordion-header>Kijelző</p-accordion-header>
                             <p-accordion-content>
-                                <p class="m-0">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                    doloremque
-                                    laudantium, totam rem
-                                    aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
-                                    vitae
-                                    dicta sunt explicabo. Nemo
-                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                    consequuntur magni dolores eos
-                                    qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non
-                                    numquam
-                                    eius modi.
-                                </p>
+                                <p-panel header="Kijelző mérete" [toggleable]="true">
+                                    <div class="checkbox-column">
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kijelzo1" value="5.5" [(ngModel)]="kijelzoMeret" />
+                                            <label for="mag1" class="ml-2"> 5.5" - 6.2" </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kijelzo2" value="6.2" [(ngModel)]="kijelzoMeret" />
+                                            <label for="mag2" class="ml-2"> 6.2" - 6.5" </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kijelzo3" value="6.5" [(ngModel)]="kijelzoMeret" />
+                                            <label for="mag3" class="ml-2"> 6.5" - 6.7" </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kijelzo4" value="6.7" [(ngModel)]="kijelzoMeret" />
+                                            <label for="mag4" class="ml-2"> 6.7"+ </label>
+                                        </div>
+                                    </div>
+                                </p-panel>
+                                <p-panel header="Képfrissítés" [toggleable]="true">
+                                    <div class="checkbox-column">
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kepfrissites1" value="60" [(ngModel)]="kepfrissites" />
+                                            <label for="mag1" class="ml-2"> 60hz </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kepfrissites2" value="90" [(ngModel)]="kepfrissites" />
+                                            <label for="mag2" class="ml-2"> 90hz </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kepfrissites" value="120" [(ngModel)]="kepfrissites" />
+                                            <label for="mag3" class="ml-2"> 120hz </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="kepfrissites" value="165" [(ngModel)]="kepfrissites" />
+                                            <label for="mag4" class="ml-2"> 165hz </label>
+                                        </div>
+                                    </div>
+                                </p-panel>
                             </p-accordion-content>
                         </p-accordion-panel>
-
+    
                         <p-accordion-panel value="3">
                             <p-accordion-header>Kamera</p-accordion-header>
                             <p-accordion-content>
-                                <p class="m-0">
-                                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                    praesentium
-                                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                                    occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
-                                    mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
-                                    expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque
-                                    nihil impedit quo minus.
-                                </p>
+                                <p-panel header="Hátlapi kamera" [toggleable]="true">
+                                    <div class="checkbox-column">
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="fokamera1" value="12" [(ngModel)]="foKamera"/>
+                                            <label for="fokamera1" class="ml-2"> 12px </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="fokamera2" value="48" [(ngModel)]="foKamera" />
+                                            <label for="fokamera" class="ml-2"> 48px </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="fokamera3" value="50" [(ngModel)]="foKamera" />
+                                            <label for="fokamera3" class="ml-2"> 50px </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="fokamera4" value="200" [(ngModel)]="foKamera" />
+                                            <label for="fokamera4" class="ml-2"> 200px </label>
+                                        </div>
+                                    </div>
+                                </p-panel>
+                                <p-panel header="Előlapi kamera" [toggleable]="true">
+                                    <div class="checkbox-column">
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera1" value="10" [(ngModel)]="szelfiKamera"/>
+                                            <label for="fokamera1" class="ml-2"> 10px </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera2" value="12" [(ngModel)]="szelfiKamera" />
+                                            <label for="fokamera" class="ml-2"> 12px </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera3" value="16" [(ngModel)]="szelfiKamera" />
+                                            <label for="fokamera3" class="ml-2"> 16px </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera4" value="32" [(ngModel)]="szelfiKamera" />
+                                            <label for="fokamera4" class="ml-2"> 32+px </label>
+                                        </div>
+                                    </div>
+                                </p-panel>
+                                <p-panel header="Videófelvétel" [toggleable]="true">
+                                    <div class="checkbox-column">
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="videofelvetel" value="4" [(ngModel)]="videoFelvetel"/>
+                                            <label for="fokamera1" class="ml-2"> 1080p60fps </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="videofelvetel" value="4" [(ngModel)]="videoFelvetel" />
+                                            <label for="fokamera" class="ml-2"> 4k30fps </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="videofelvetel" value="4" [(ngModel)]="videoFelvetel" />
+                                            <label for="fokamera3" class="ml-2"> 4k60fps </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="videofelvetel" value="8" [(ngModel)]="videoFelvetel" />
+                                            <label for="fokamera4" class="ml-2"> 8k24fps </label>
+                                        </div>
+                                    </div>
+                                </p-panel>
+                            </p-accordion-content>
+                        </p-accordion-panel>
+    
+    
+    
+                        <p-accordion-panel value="4">
+                            <p-accordion-header>Akkumulátor</p-accordion-header>
+                            <p-accordion-content>
+                                <p-panel header="Akkumulátor kapacitás" [toggleable]="true">
+                                    <div class="checkbox-column">
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="fokamera1" value="4000" [(ngModel)]="akkumulatorKapacitas"/>
+                                            <label for="fokamera1" class="ml-2"> 4000mAh </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="fokamera2" value="5000" [(ngModel)]="akkumulatorKapacitas" />
+                                            <label for="fokamera" class="ml-2"> 5000mAh </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="fokamera3" value="6000" [(ngModel)]="akkumulatorKapacitas" />
+                                            <label for="fokamera3" class="ml-2"> 6000mAh </label>
+                                        </div>
+                                    </div>
+                                </p-panel>
+                                <p-panel header="Vezetékes töltés" [toggleable]="true">
+                                    <div class="checkbox-column">
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera1" value="20" [(ngModel)]="toltes"/>
+                                            <label for="fokamera1" class="ml-2"> 20W </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera2" value="25" [(ngModel)]="toltes" />
+                                            <label for="fokamera" class="ml-2"> 25W </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera3" value="45" [(ngModel)]="toltes" />
+                                            <label for="fokamera3" class="ml-2"> 45W </label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <p-checkbox inputId="szelfikamera4" value="100" [(ngModel)]="toltes" />
+                                            <label for="fokamera4" class="ml-2"> 100W </label>
+                                        </div>
+                                    </div>
+                                </p-panel>
                             </p-accordion-content>
                         </p-accordion-panel>
                     </p-accordion>
