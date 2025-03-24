@@ -12,8 +12,6 @@ export class TelephoneService {
     private telephoneRepository: Repository<Telephone>,
   ) { }
 
-
-
   findOne(id: number) {
     return this.telephoneRepository.findOne({ where: { id }, relations: ['specs', 'os', 'display', 'camera', 'battery'] });
   }

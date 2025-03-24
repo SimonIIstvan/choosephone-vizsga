@@ -11,7 +11,6 @@ export class TelephoneController {
   @Get()
   findAll(@Query() termekSzuroDto: TermekSzuroDto) {
     const arrayFields = ['tarhely', 'ram', 'markak', 'magok', 'kepfrissites', 'kijelzoMeret', 'foKamera', 'szelfiKamera', 'videoFelvetel', 'akkumulatorKapacitas', 'toltes'];
-
     // Végigmegyünk ezeken a mezőkön és biztosítjuk, hogy tömb típusúak legyenek
     arrayFields.forEach(field => {
       if (termekSzuroDto[field] !== undefined && !Array.isArray(termekSzuroDto[field])) {
