@@ -48,10 +48,6 @@ form {
     transition: all 0.2 ease-in-out;
 }
 
-form:hover{
-    transform: scale(1.07);
-    transition: all 0.2 ease-in-out;
-}
 
 .container {
     display: flex;
